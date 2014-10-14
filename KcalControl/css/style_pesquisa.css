@@ -1,0 +1,314 @@
+input[type=text]:focus, input[type=password]:focus, input[type=button]:focus, select:focus, textarea:focus {
+     outline: none;
+}
+ul,li{ padding:0; margin:0; list-style-type:none;}
+body{ margin:0;}
+
+header {
+    color: white;
+    height: 57px;
+	width:100%;
+	background:url(../imagens/bg_header.png) repeat-x;	
+}
+#header_menu{ width:1020px; margin:auto;}
+#header_menu h1{background:url(../imagens/logo.png) no-repeat; float: left;height: 46px; margin: 3px 0 0 0;}
+#header_menu a{
+	margin: 5px 0 0 60px;
+	text-decoration: none;
+	color: white;
+	float: left;
+	font: 30px facebook Letter Faces;
+}
+#header_menu ul{ float:right;margin:12px 0 0 0;}
+#header_menu li{ float:left; margin:0 0 0 30px;}
+#header_menu li a{ font-size:27px; margin:0;}
+#header_menu li a:hover{border-bottom: 2px solid green;}
+.titulo {
+    color: black;
+    text-align: center;
+    font-family: Facebook Letter Faces;
+	margin:0 0 10px 0;
+}
+#barra-busca {
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-top: 40px;
+    border: none;
+    margin-bottom: 10px;
+}
+#txtnome {
+    width:480px;
+    border-radius: 5px;
+    height: 50px;
+    border: 1px solid #ccc;
+    padding: 0 0 0 7px;
+    margin: 10 auto 10 auto;
+}
+#btn-busca {
+    border: none;
+	text-indent: -99999999px;
+	background: url('../imagens/lupa2.png') no-repeat;
+	width: 41px;
+	height: 50px;
+	margin: 0 0 0 -50px;
+	border-left: 1px solid #ccc;
+	cursor: pointer;
+}
+#Pesquisar{
+	width: 560px;
+	margin:15px auto;
+	
+	}
+#btn-add {
+	border: none;
+	text-indent: -99999999px;
+	background: url('../imagens/add.png') no-repeat;
+	width: 49px;
+	height: 49px;
+	cursor: pointer;
+	margin: 0 0 0 10px;
+}
+#add-alimentos-refeicoes {
+    padding: 5px;
+    background: #ccc;
+    min-width: 200px;
+    min-height: 200px;
+    width: auto;
+    border: solid 2px green;
+}
+#itens-adicionados {
+    text-align: center;
+    width: auto;
+    padding: 0;
+    margin: 40px auto;
+}
+.content ul li {
+    background: white;
+    list-style-type: none;
+    border: 1px solid #ccc;
+    height:48px;
+    width: 440px;
+    margin: 0 5px 10px;
+    border-radius: 8px;
+	float:left;
+	padding:10px;
+	cursor:pointer;
+	font-family:arial;
+}
+#Resultado li:hover{
+	transition: all 1.5s ease;
+	background:green;
+	}
+.resultado li:hover{
+	transition: all 1.5s ease;
+	background:#D90000;
+	}
+.hover_add{display:none;font-family: Facebook Letter Faces; font-size: 45px; padding: 0; margin: 0; text-align: center; color: white;margin: -3px 0 0 0;}
+.resultado li:hover div,
+.resultado li:hover span{ display:none;}
+.resultado li:hover .hover_add{ display:block;}
+
+#itens-pesquisados li {
+    float: left;
+}
+#total-calorias {
+    float: right;
+    margin-top: -220px;
+    margin-right: auto;
+    border: solid 1px;
+    width: 280px;
+    height: 50px;
+    border-radius: 8px;
+    background: #0da51a;
+    text-align: center;
+    padding: 16px;
+}
+#menu-refeicoes {
+    border: solid 1px;
+    float: right;
+    margin: -100px 190px 0 0;
+}
+.al-tabela {
+    margin: 7px;
+    float: left;
+}
+.resultado{
+	margin: auto;
+	width: 487px;
+	float: left;
+	}
+.resultado ul{
+	margin: 29px 0;
+	padding: 0;
+	}
+.resultado strong{ float:left;}
+.resultado span{ float:left;}
+.resultado div{ float:left; width:80px; color:#333}
+.resultado div#porcao{ width: 205px; margin: 0 0 0 15px;}
+#qtd{width:60px;}
+#Resultado #qtd{display:none;}
+#nome-alimento {
+   font-size: 15px;
+	font-weight: bold;
+	float: left;
+	margin:0 0 9px 0;
+	width:100%;
+	font-family:arial;
+}
+#btn-excluir {
+    position: absolute;
+    margin-left: 5px;
+    text-indent: -9999999999px;
+    cursor: pointer;
+    background: url('../imagens/x.png') no-repeat;
+    width: 40px;
+    height: 42px;
+    border-radius: 10px;
+}
+.btn-ok {
+    position: absolute;
+    margin: 7px 0 0 -7px;
+    text-indent: -9999999999px;
+    cursor: pointer;
+    background: url('../imagens/ok.png') no-repeat;
+    width: 40px;
+    height: 42px;
+    border-radius: 10px;
+	border:none;
+}
+#Container{ width:1020px; margin:auto;}
+#tabela{float: right; background: #eeeeee; border: 1px solid green; margin: 30px 0;width: 530px; display:none; border-radius:5px; box-shadow: 0px 0px 13px; padding:0 0 30px 0;}
+#nova_tabela{ width:500px; float: left;padding: 10px 0 0 29px;}
+.salvar_alimentos{ width:344px; height:79px; background:#D90000; border:1px solid black; border-radius:5px; float: right;
+margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook Letter Faces; font-size: 40px; padding: 10px 0 0;}
+#total{ font-size:60px;}
+.TB_overlay {
+	background: black;
+	opacity:0.3;
+	display:none;
+}
+.addalimento {
+	margin-left: -290px;
+	position: fixed;
+	top: 15%;
+	left: 50%;
+	z-index: 10002;
+	font: bold 22px Tahoma, Arial, sans-serif;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	display:none;
+}
+#janela_add {
+    text-align: center;
+    background-color: white;
+    height: 430px;
+    width: 580px;
+    border: solid 2px green;
+    border-radius: 10px;
+    box-shadow: 0px 0px 70px ;
+	
+    
+}
+.box_input{	font-family: Facebook Letter Faces;}
+.box_input option{ color:black;}
+.box_input select{
+    margin: 0 0 7px 0;
+    padding: 3px 3px 3px 7px;;
+    width: 492px;
+    height:58px;
+    border-radius: 6px;
+    border: solid 1px #666666;;
+	font-family: Facebook Letter Faces;
+	font-size:25px; 
+	color: #999;
+}
+.box_input input {
+    margin: 0 0 7px 0;
+    padding: 3px 3px 3px 7px;;
+    width: 480px;
+    height:50px;
+    border-radius: 6px;
+    border: solid 1px #666666;;
+	font-family: Facebook Letter Faces;
+	font-size:25px; 
+}
+.box_input h1{ font: bold 32px facebook Letter Faces; text-align:center;}
+#btn-salvar {
+    cursor: pointer;
+    background-color: green;
+    color: white;  
+	width: 492px!important;
+	height: 58px!important;
+}
+.btn-proximo {
+    cursor: pointer;
+    background-color: green;
+    color: white;  
+	width: 492px!important;
+	height: 58px!important;
+}
+.btn-back {
+    cursor: pointer;
+    background-color: red;
+    color: white;  
+	width: 240px!important;
+	height: 58px!important;
+}
+.btn-proximo-mini {
+    cursor: pointer;
+    background-color: green;
+    color: white;  
+	width: 240px!important;
+	height: 58px!important;
+	float:right;
+}
+
+#btn-fechar {
+    float:right;
+    width: 40px;
+    height: 40px;
+    background: url(../imagens/x.png) no-repeat;
+    margin: -15px -10px;
+    border: none;
+	cursor:pointer;
+}
+.hidden{ display:none!important;}
+.salvar_refeicao{
+	float: left;
+	margin: 0 0 0 95px;
+	}
+.salvar_refeicao #nome{
+	width: 340px;
+	display: block;
+	float: right;
+	margin: 0 49px 0 0;
+	height: 33px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 0 0 0 5px;
+	}
+.salvar_refeicao label	{
+	color: black;
+	font-family: Facebook Letter Faces;
+	display: block;
+	margin: 0 0 7px 0;
+	}
+#acaos{
+	height: 35px;
+	width: 347px;
+	margin: 7px 0;
+	border-radius: 5px;
+	background: green;
+	border: 1px solid black;
+	cursor: pointer;
+	box-shadow: 0px 0px 20px;
+	color: white;
+	font-family: Facebook Letter Faces;
+	font-size: 20PX;	
+	}
+.box_centro{
+	margin: auto;
+	width: 493px;
+	display:none;
+}
+.cadastro1{ display:block;}
