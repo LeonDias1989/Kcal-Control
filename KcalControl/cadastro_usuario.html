@@ -30,7 +30,7 @@ function proximo(variavel){
 </header>
 <div class="content">
 <div class="box_centro cadastro1">
-<form action="cadastro_usuario.php" >
+<form action="cadastro_usuario.php" method="post" >
     <div class="box_input">
         <h1>Dados Pessoais</h1>
         <input type="text" name="nome" placeholder="Nome Completo"/>    
@@ -41,7 +41,7 @@ function proximo(variavel){
             <option value="F">Feminino</option>
     	</select>
         <input type="password" name="senha" placeholder="Senha"/>
-        <input type="password" name="confirmasenha" placeholder="Confirme sua Senha"/>
+        <input type="password" name="confirmaSenha" placeholder="Confirme sua Senha"/>
         <input type="button" value="Próximo" onclick="proximo('cadastro2');" class="btn-proximo"/>
     </div>   
 </div>

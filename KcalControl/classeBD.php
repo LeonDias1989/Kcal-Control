@@ -29,18 +29,17 @@ $db = mysql_select_db("alimentos");
 		}	
 
 		
-
-		function incluirUsuario($nome, $email, $senha, $idade, $sexo, $peso, $altura, $bf, $hobby, $objetivo, $esporte){
-			$consulta = "SELECT email FROM usuarios WHERE email='$email'";
+		function incluirUsuario($nome, $email, $senha, $confirmaSenha, $idade, $sexo, $peso, $altura, $bf, $hobby, $objetivo, $esporte){
+			$consulta = "SELECT email FROM usuario WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
 
 			if(mysqli_num_rows($resultado) !=0){
 				echo "E-mail já cadastrado";
 			}else if($senha != $confirmaSenha){
 				echo "As senhas não conferem";
-			}else{
+			}else{			
 				$inserir = "INSERT INTO usuario (nome, email, senha, idade, sexo, peso, altura, bf, hobby, objetivo, esporte) 
-				VALUES ($nome, $email, $senha, $idade, $sexo, $peso, $altura, $bf, $hobby, $objetivo, $esporte)";
+				VALUES ('$nome', '$email', '$senha', '$idade', '$sexo', '$peso', '$altura', '$bf', '$hobby', '$objetivo', '$esporte')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
 				echo "usuário cadastrado!";
