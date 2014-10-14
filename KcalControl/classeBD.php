@@ -19,7 +19,7 @@ $db = mysql_select_db("alimentos");
 		function conectar(){
 
 			$this->conexao = mysqli_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
-			mysqli_select_db($this->conexao, "alimentos") or die("Banco não encontrado");
+			mysqli_select_db($this->conexao, "kcal") or die("Banco não encontrado");
 
 			mysqli_set_charset($this->conexao, "utf8");
 		}
@@ -43,6 +43,21 @@ $db = mysql_select_db("alimentos");
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
 				echo "usuário cadastrado!";
+			}
+		}
+
+		function incluirRefeicao($nome, $calorias, $idCliente, $idAlimento){
+			$consulta = "SELECT nome FROM refeicao WHERE nome='nome'";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar a refeição");
+
+			if(mysqli_num_rows($resultado) !=0){
+				echo "Refeição já cadastrada";
+			}else{			
+				$inserir = "INSERT INTO refeicao (nome, calorias, id_cliente, id_alimento) 
+				VALUES ('$nome', '$calorias', '$id_cliente', '$id_alimento')";
+				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir a refeiçãp");
+				//echo"Cadastro efetuado com sucesso !";
+				echo "refeição cadastrada!";
 			}
 		}
 	}
