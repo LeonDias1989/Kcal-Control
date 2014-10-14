@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Out-2014 às 03:12
+-- Generation Time: 14-Out-2014 às 20:37
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `alimentos`
+-- Database: `kcal`
 --
 
 -- --------------------------------------------------------
@@ -4330,6 +4330,27 @@ INSERT INTO `exercicios` (`id`, `nome`, `calorias`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `refeicao`
+--
+
+CREATE TABLE IF NOT EXISTS `refeicao` (
+`id` int(11) NOT NULL,
+  `nome` int(11) NOT NULL,
+  `calorias` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_alimento` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `refeicao`
+--
+
+INSERT INTO `refeicao` (`id`, `nome`, `calorias`, `id_cliente`, `id_alimento`) VALUES
+(2, 0, 72, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -4346,7 +4367,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `hobby` text COLLATE utf8_bin NOT NULL,
   `objetivo` text COLLATE utf8_bin NOT NULL,
   `esporte` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `idade`, `sexo`, `peso`, `altura`, `bf`, `hobby`, `objetivo`, `esporte`) VALUES
+(1, 'Adriano', 'asd@asd.com', '12345', 18, 'M', 60, 172, 'asd', 'asd', 'hue', 'euh');
 
 --
 -- Indexes for dumped tables
@@ -4362,6 +4390,12 @@ ALTER TABLE `alimentos`
 -- Indexes for table `exercicios`
 --
 ALTER TABLE `exercicios`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `refeicao`
+--
+ALTER TABLE `refeicao`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -4385,10 +4419,15 @@ MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4155;
 ALTER TABLE `exercicios`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
 --
+-- AUTO_INCREMENT for table `refeicao`
+--
+ALTER TABLE `refeicao`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
