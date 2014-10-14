@@ -60,5 +60,20 @@ $db = mysql_select_db("alimentos");
 				echo "refeição cadastrada!";
 			}
 		}
+        
+        function incluirAlimento($nome, $peso, $porcao, $calorias){
+			$consulta = "SELECT nome FROM alimentos WHERE nome='nome'";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o alimento");
+
+			if(mysqli_num_rows($resultado) !=0){
+				echo "alimento já cadastrado";
+			}else{			
+				$inserir = "INSERT INTO alimentos (nome, peso, porcao, calorias) 
+				VALUES ('$nome', '$peso', '$porcao', '$calorias')";
+				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o alimento");
+				//echo"Cadastro efetuado com sucesso !";
+				echo "alimento cadastrado!";
+			}
+		}
 	}
 ?>
