@@ -6,7 +6,7 @@ if (isset($_GET["txtnome"])) { $nome = $_GET["txtnome"]? $_GET['txtnome'] : '';
 $server = "localhost"; 
 $user = "root"; 
 $senha = ""; 
-$base = "kcal"; 
+$base = "alimentos"; 
 $conexao = mysql_connect($server, $user, $senha) or die("Erro na conexão!"); 
 mysql_select_db($base);
 
@@ -27,7 +27,7 @@ $return = "$tabela";
 // Captura os dados da consulta e inseri na tabela HTML 
   while ($linha = mysql_fetch_array($result)) { 
   $return.= "<li onclick=getLinha(". $linha["ID"] ."); class=" . $linha["ID"] . ">";
-  $return.= "<span id=nome-alimento >" . utf8_encode($linha["nome"]) . "</span>"; 
+  $return.= "<span id=nome-alimento >" . utf8_encode($linha["Nome"]) . "</span>"; 
   $return.= "<div><strong>Peso:</strong><span id=peso>" . utf8_encode($linha["Peso"]) . "g</span></div>"; 
   $return.= "<div id=porcao><strong></strong><span>" . utf8_encode($linha["Porcao"]) . "</span></div>";
   $return.= "<div id=qtd><strong>Qtd:</strong><span id=quantidade class=qtd>1</span></div>"; 

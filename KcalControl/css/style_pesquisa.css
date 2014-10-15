@@ -82,7 +82,7 @@ header {
     padding: 0;
     margin: 40px auto;
 }
-.content ul li {
+.content li {
     background: white;
     list-style-type: none;
     border: 1px solid #ccc;
@@ -177,7 +177,7 @@ header {
 	border:none;
 }
 #Container{ width:1020px; margin:auto;}
-#tabela{float: right; background: #eeeeee; border: 1px solid green; margin: 30px 0;width: 530px; display:none; border-radius:5px; box-shadow: 0px 0px 13px; padding:0 0 30px 0;}
+#tabela{float: right; background: #eeeeee; border: 1px solid green; margin: 30px 0;width: 530px; border-radius:5px; box-shadow: 0px 0px 13px; padding:0 0 30px 0;}
 #nova_tabela{ width:500px; float: left;padding: 10px 0 0 29px;}
 .salvar_alimentos{ width:344px; height:79px; background:#D90000; border:1px solid black; border-radius:5px; float: right;
 margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook Letter Faces; font-size: 40px; padding: 10px 0 0;}
@@ -187,6 +187,7 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 	opacity:0.3;
 	display:none;
 }
+.login,
 .addalimento {
 	margin-left: -290px;
 	position: fixed;
@@ -233,6 +234,29 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 	font-size:25px; 
 }
 .box_input h1{ font: bold 32px facebook Letter Faces; text-align:center;}
+.cadastrese{
+	float: left;
+	width: 100%;
+	background: #ccc;
+	margin: 20px 0 0 0;
+	padding: 0 0 21px 0;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-top: 1px solid black;
+	}
+	.cadastrese a{font-family: arial;font-size: 18px; color:black;}
+	.cadastrese p{font-family: arial;font-size: 26px; color:black;}
+#btn_senha	{
+	float: left;
+	color: black;
+	text-decoration: NONE;
+	font-size: 14px;
+	margin: 20px 0 0 50px;
+	font-family: arial;
+	padding: 5px 0 5px 27px;
+	background:url(../imagens/senha_ico.png) no-repeat;
+}
+#btn_senha:hover{ text-decoration:underline;}
 #btn-salvar {
     cursor: pointer;
     background-color: green;
@@ -240,6 +264,15 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 	width: 492px!important;
 	height: 58px!important;
 }
+#btn_entrar{
+	cursor: pointer;
+	background-color: green;
+	color: white;
+	width: 235px!important;
+	height: 58px!important;
+	float: left;
+	margin: 0 0 0 44px;
+	}
 .btn-proximo {
     cursor: pointer;
     background-color: green;
@@ -312,3 +345,5 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 	display:none;
 }
 .cadastro1{ display:block;}
+
+footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:50px 0 0 0; float:left; width:100%;}
