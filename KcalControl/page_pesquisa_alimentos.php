@@ -52,66 +52,12 @@ function addalimento(aux){
 			$("#total_calorias").val(resultado);
 		
 	};
-
-	function addRefeicao(){
-			var nomeRefeicao = $("#nome").attr("value");
-			var ali;
-			var vetor = new Array();
-			
-		$("#nova_tabela li").each(function(i) {
-			
-			var idAlimento = $(this).attr("class");
-			var qtdAlimento = $("."+idAlimento +" "+".qtd").html();
-			
-			
-			ali = {id:idAlimento, qtd:qtdAlimento};
-			vetor[i] = ali;
-        });
-		
-		var myJSONText = JSON.stringify(vetor);
-		alert("JSON = " + myJSONText);
-		
-		ajaxAlimento(nomeRefeicao, myJSONText);
-		
-		
-	}
-
-
-
-
-	function ajaxAlimento(nomeRefeicao, myJSONText){
-		alert("aaaaaa");
-		
-		
-		alert(myJSONText);
-		
-		
-		$.ajax({        
-		   type: "POST",
-		   url: "pesquisa_alimentos.php",
-		   data: { nome: nomeRefeicao, alimentos: myJSONText },
-		   success: function(data) {
-			   //alert("aaa" + data);
-				$("#resultados").html(data);        
-		   },
-		   error: function (xhr, ajaxOptions, thrownError) {
-        		alert(xhr.status);
-        		alert(thrownError);
-      		}
-		}); 
-		
-  
-  
-    };
 </script>
 
 </head>
 
 <body>
  <?php include 'includes/header.inc.php'; ?>
- 
- 	<div id="resultados">aaaaa</div>
- 
    <div id="Container"> 
    <div id="Pesquisar"> 
    <h1 class="titulo"> Pesquisa de Alimentos</h1>
@@ -143,7 +89,7 @@ function addalimento(aux){
         <label class="hidden" for="favoritos">Favoritos:</label>
         <input type="hidden" name="favoritos" value="favoritos" id="favoritos" />
         
-        <input type="button" name="acao" id="acaos" value="SALVAR" onclick="addRefeicao();"/> 
+        <input type="submit" name="acao" id="acaos" value="SALVAR"/> 
     </form>
 
    </div>
