@@ -6,7 +6,7 @@ if (isset($_GET["txtnome"])) { $nome = $_GET["txtnome"]? $_GET['txtnome'] : '';
 $server = "localhost"; 
 $user = "root"; 
 $senha = ""; 
-$base = "alimentos"; 
+$base = "kcal"; 
 $conexao = mysql_connect($server, $user, $senha) or die("Erro na conexão!"); 
 mysql_select_db($base);
 
