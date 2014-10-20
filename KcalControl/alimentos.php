@@ -13,6 +13,7 @@ mysql_select_db($base);
 // Verifica se a variável está vazia 
 if (empty($nome)) { $sql = "SELECT * FROM alimentos"; } 
 else { $nome .= "%"; $sql = "SELECT * FROM alimentos WHERE nome like '$nome'"; } 
+
 sleep(1); $result = mysql_query($sql); 
 $cont = mysql_affected_rows($conexao); 
 
