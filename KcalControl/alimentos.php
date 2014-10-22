@@ -6,13 +6,14 @@ if (isset($_GET["txtnome"])) { $nome = $_GET["txtnome"]? $_GET['txtnome'] : '';
 $server = "localhost"; 
 $user = "root"; 
 $senha = ""; 
-$base = "alimentos"; 
+$base = "kcal"; 
 $conexao = mysql_connect($server, $user, $senha) or die("Erro na conexão!"); 
 mysql_select_db($base);
 
 // Verifica se a variável está vazia 
 if (empty($nome)) { $sql = "SELECT * FROM alimentos"; } 
 else { $nome .= "%"; $sql = "SELECT * FROM alimentos WHERE nome like '$nome'"; } 
+
 sleep(1); $result = mysql_query($sql); 
 $cont = mysql_affected_rows($conexao); 
 

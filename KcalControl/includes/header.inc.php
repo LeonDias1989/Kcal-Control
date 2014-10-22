@@ -15,10 +15,13 @@
     <div id="janela_add" class="box_input">
         <span id="btn-fechar" onclick="$('.tb').fadeOut()" class="bt_excluir3"></span>
         <h2>Entre</h2>
-        <input type="text" placeholder="Login"/>    
-        <input type="password" placeholder="Senha"> 
-        <input type="button" value="Entrar" id="btn_entrar"/> 
-        <a id="btn_senha" href="#">ESQUECI MINHA SENHA</a>  
+
+     <form method="POST" action="login.php">
+        <input method="POST" type="text" placeholder="Email" id="email" name="email"/>    
+        <input method="POST" type="password" placeholder="Senha" id="senha" name="senha"</input> 
+        <input type="submit" value="Entrar" id="btn_entrar" id="entrar" name="entrar"/> 
+        <a id="btn_senha" href="index_teste.php">ESQUECI MINHA SENHA</a>  
+    </form>
         <div class="cadastrese">
         	<p>AINDA NÃO TEM CONTA?</p>
         	<a  href="page_cadastro_usuario.php">CADASTRE-SE AGORA</a>  

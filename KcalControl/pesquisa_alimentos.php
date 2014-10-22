@@ -1,6 +1,5 @@
 <?php
-    
-   include 'classeBD.php';
+include 'classeBD.php';
 	
 	$nome = $_POST['nome'];
     $vetor =  json_decode($_POST['alimentos']);

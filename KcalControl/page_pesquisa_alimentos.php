@@ -117,7 +117,6 @@ function addalimento(aux){
    	<form method="POST" action="pesquisa_alimentos.php">
         <label for="nome">Nome da Refeição:</label>
         <input type="text" name="nome" value="refeicao" id="nome" />
-        
         <input type="button" name="acao" id="acaos" value="SALVAR" onclick="addRefeicao();"/> 
     </form>
 
