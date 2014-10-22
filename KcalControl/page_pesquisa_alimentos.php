@@ -62,15 +62,11 @@ function addalimento(aux){
 			
 			var idAlimento = $(this).attr("class");
 			var qtdAlimento = $("."+idAlimento +" "+".qtd").html();
-			
-			
 			ali = {id:idAlimento, qtd:qtdAlimento};
 			vetor[i] = ali;
         });
 		
 		var myJSONText = JSON.stringify(vetor);
-		alert("JSON = " + myJSONText);
-		
 		ajaxAlimento(nomeRefeicao, myJSONText);
 		
 		
@@ -80,22 +76,16 @@ function addalimento(aux){
 
 
 	function ajaxAlimento(nomeRefeicao, myJSONText){
-		alert("aaaaaa");
-		
-		
-		alert(myJSONText);
-		
-		
 		$.ajax({        
 		   type: "POST",
 		   url: "pesquisa_alimentos.php",
 		   data: { nome: nomeRefeicao, alimentos: myJSONText },
 		   success: function(data) {
 			   //alert("aaa" + data);
-				$("#resultados").html(data);        
+				$("#msg_pop").html(data);
+				$(".pop").show(500);        
 		   },
 		   error: function (xhr, ajaxOptions, thrownError) {
-        		alert(xhr.status);
         		alert(thrownError);
       		}
 		}); 
@@ -109,9 +99,6 @@ function addalimento(aux){
 
 <body>
  <?php include 'includes/header.inc.php'; ?>
- 
- 	<div id="resultados">aaaaa</div>
- 
    <div id="Container"> 
    <div id="Pesquisar"> 
    <h1 class="titulo"> Pesquisa de Alimentos</h1>
@@ -130,18 +117,6 @@ function addalimento(aux){
    	<form method="POST" action="pesquisa_alimentos.php">
         <label for="nome">Nome da Refeição:</label>
         <input type="text" name="nome" value="refeicao" id="nome" />
-        
-        <label class="hidden" for="total_calorias">total calorias:</label>
-        <input type="hidden" name="total_calorias" value="calorias" id="total_calorias" />
-        
-        <label class="hidden" for="id_cliente">Id do cliente:</label>
-        <input type="hidden" name="id_cliente" value="cliente" id="id_cliente" />
-        
-        <label class="hidden" for="id_alimento">Id do alimento:</label>
-        <input type="hidden" name="id_alimento" value="alimento" id="id_alimento" />
-        
-        <label class="hidden" for="favoritos">Favoritos:</label>
-        <input type="hidden" name="favoritos" value="favoritos" id="favoritos" />
         
         <input type="button" name="acao" id="acaos" value="SALVAR" onclick="addRefeicao();"/> 
     </form>
@@ -175,5 +150,6 @@ function addalimento(aux){
         </div>
     </div>
     <div id="td1" class="TB_overlay tb" style="position:fixed;z-index:10000;top:0px;left:0px;height:100%;width:100%" onclick="$('.tb').fadeOut()">  	</div>
+ <?php include 'popup/msg.pop.php'; ?>
 </body>
 </html>

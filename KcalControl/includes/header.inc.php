@@ -4,7 +4,7 @@
         <ul>
         	<li><a href="#" title="#">Dica</a></li>
             <li><a href="#" title="#">Controle</a></li>
-            <li><a href="pesquisa_alimentos.php" title="#">Pesquisa</a></li>
+            <li><a href="page_pesquisa_alimentos.php" title="#">Pesquisa</a></li>
             <li><a href="#" title="#">Ranking</a></li>
             <li><a href="#" title="#" onclick="addalimento('login');">Login</a></li>
         </ul>
