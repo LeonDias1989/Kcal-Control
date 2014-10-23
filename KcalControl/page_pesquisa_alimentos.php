@@ -21,60 +21,51 @@ function addalimento(aux){
             var idUnico = $(this).attr("class");
 			if(idUnico == id){
 				a++;
-				}
+			}
         });
 		if(a>0){
 			var qtd = $("#tabela "+"."+id+" .qtd").html();
 			var qtdAdd = parseInt(qtd) + 1;
 			$("#tabela "+"."+id+" .qtd").text(qtdAdd);
-			
 			var caloriasTabela = $("#tabela "+"."+id+" .calorias").html();
 			var caloriasTabelaAdd = parseInt(caloriasTabela) + parseInt(calorias);
 			$("#tabela "+"."+id+" .calorias").text(caloriasTabelaAdd);
-			//preenchimentos dos input hidden para enviar para o PHP.
-			$("#total_calorias").val(resultado);
-			}else{
+		}else{
 			$("#tabela").css("display","block");
 			$("#Resultado "+'.'+id).clone().appendTo("#nova_tabela");
 			setTimeout(function(){$("#nova_tabela "+"."+id).attr("onclick","getExcluir("+id+");")}, 30);
 			$("#nova_tabela .hover_add").text("Remover");
-			//preenchimentos dos input hidden para enviar para o PHP.
-			$("#total_calorias").val(resultado);
 			}
 	};
+	
 	function getExcluir(id) {
 		var calorias = $("#tabela "+'.'+id+' .calorias').html();
 		var total = $("#total").html();
 		var resultado 	= parseInt(total) - parseInt(calorias);
 		$("#total").text(resultado);
-		$("#tabela "+"."+id).remove();
-		//preenchimentos dos input hidden para enviar para o PHP.
-			$("#total_calorias").val(resultado);
-		
+		$("#tabela "+"."+id).remove();	
 	};
 
 	function addRefeicao(){
-			var nomeRefeicao = $("#nome").attr("value");
+			var nomeRefeicao = $("input[name=nome]").val();
 			var ali;
 			var vetor = new Array();
-			
-		$("#nova_tabela li").each(function(i) {
-			
-			var idAlimento = $(this).attr("class");
-			var qtdAlimento = $("."+idAlimento +" "+".qtd").html();
-			ali = {id:idAlimento, qtd:qtdAlimento};
-			vetor[i] = ali;
-        });
-		
-		var myJSONText = JSON.stringify(vetor);
-		ajaxAlimento(nomeRefeicao, myJSONText);
-		
-		
+			if(nomeRefeicao != ""){
+				$("#nova_tabela li").each(function(i) {
+					var idAlimento = $(this).attr("class");
+					var qtdAlimento = $("."+idAlimento +" "+".qtd").html();
+					ali = {id:idAlimento, qtd:qtdAlimento};
+					vetor[i] = ali;
+				});
+				var myJSONText = JSON.stringify(vetor);
+				ajaxAlimento(nomeRefeicao, myJSONText);
+			}else{
+				$("#msg_pop").html("Preencha o nome da refeição !");
+				$("#nome").css("border","1px solid red");
+				$(".pop").show(500);
+			}
 	}
-
-
-
-
+	
 	function ajaxAlimento(nomeRefeicao, myJSONText){
 		$.ajax({        
 		   type: "POST",
@@ -84,15 +75,13 @@ function addalimento(aux){
 			   //alert("aaa" + data);
 				$("#msg_pop").html(data);
 				$(".pop").show(500);        
-		   },
+			},
 		   error: function (xhr, ajaxOptions, thrownError) {
         		alert(thrownError);
       		}
 		}); 
-		
-  
-  
     };
+	
 </script>
 
 </head>
@@ -116,7 +105,7 @@ function addalimento(aux){
    <div>
    	<form method="POST" action="pesquisa_alimentos.php">
         <label for="nome">Nome da Refeição:</label>
-        <input type="text" name="nome" value="refeicao" id="nome" />
+        <input type="text" name="nome" id="nome" />
         <input type="button" name="acao" id="acaos" value="SALVAR" onclick="addRefeicao();"/> 
     </form>
 

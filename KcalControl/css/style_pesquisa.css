@@ -11,7 +11,15 @@ header {
 	background:url(../imagens/bg_header.png) repeat-x;	
 }
 #header_menu{ width:1020px; margin:auto;}
-#header_menu h1{background:url(../imagens/logo.png) no-repeat; float: left;height: 46px; margin: 3px 0 0 0;}
+.logo h1{
+	background: url(../imagens/logo.png) no-repeat;
+	float: left;
+	height: 46px;
+	margin: 0;
+	width: 190px;
+	padding: 5px 0 0 58px;
+	font-size: 30px;
+	}
 #header_menu a{
 	margin: 5px 0 0 60px;
 	text-decoration: none;
@@ -367,3 +375,19 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 .cadastro1{ display:block;}
 
 footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:50px 0 0 0; float:left; width:100%;}
+#footer_central{margin: auto; width: 1020px;}
+.footer_menu { float:right; margin:50px 0 0 0;width: 50%;}
+.footer_menu ul{ float:left; margin: 0 5px 0 55px;}
+.footer_menu a{ font:13px Facebook Letter Faces; color:white; text-decoration:none;}
+.title_footer a{ font-size:23px;}
+.redes_sociais{float: left; width: 400px;}
+.redes_sociais ul{float: left; width: 100%;}
+.up_redes_sociais{ margin:-27px 0 0 0;}
+#logo_footer{float: right; margin: 85px 0 0 0;}
+#facebook{background:url(../imagens/facebook.png) repeat-x; height:105px; width:143px; margin:17px 25px 0 0; float:left;}
+#twitter{background:url(../imagens/twitter.png) repeat-x; height:96px; width:130px; margin:28px 0 0 0; float:left;}
+#instagram{background:url(../imagens/instagram.png) repeat-x; height:66px; width:78px; margin: 0 0 0 50px; float:left;}
+#youtube{background:url(../imagens/youtube.png) repeat-x; height:74px; width:100px; margin:38px 0 0 0; float:left;}
+#linkedin{background:url(../imagens/linkedin.png) repeat-x; height:77px; width:101px; margin: 0 0 0 10px; float:left;}
+#gmais{background:url(../imagens/gmais.png) repeat-x; height:85px; width:116px; margin: 0 0 0 10px; float:left;}
+#orkut{background:url(../imagens/orkut.png) repeat-x; height:68px; width:89px; margin: 20px 0 0 100px; float:left;}
