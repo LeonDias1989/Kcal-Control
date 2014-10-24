@@ -8,7 +8,10 @@ header {
     color: white;
     height: 57px;
 	width:100%;
-	background:url(../imagens/bg_header.png) repeat-x;	
+	background:url(../imagens/bg_header.png) repeat-x;
+	position: absolute;
+	top: 0;
+	z-index: 50;	
 }
 #header_menu{ width:1020px; margin:auto;}
 .logo h1{
@@ -21,7 +24,7 @@ header {
 	font-size: 30px;
 	}
 #header_menu a{
-	margin: 5px 0 0 60px;
+	margin: 5px 0 0 0;
 	text-decoration: none;
 	color: white;
 	float: left;
@@ -184,7 +187,8 @@ header {
     border-radius: 10px;
 	border:none;
 }
-#Container{ width:1020px; margin:auto;}
+.content,
+#Container{ width:1020px; margin:90px auto;}
 #tabela{float: right; background: #eeeeee; border: 1px solid green; margin: 30px 0;width: 530px; border-radius:5px; box-shadow: 0px 0px 13px; padding:0 0 30px 0;}
 #nova_tabela{ width:500px; float: left;padding: 10px 0 0 29px;}
 .salvar_alimentos{ width:344px; height:79px; background:#D90000; border:1px solid black; border-radius:5px; float: right;
@@ -374,7 +378,7 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 }
 .cadastro1{ display:block;}
 
-footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:50px 0 0 0; float:left; width:100%;}
+footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:20px 0 0 0; float:left; width:100%;}
 #footer_central{margin: auto; width: 1020px;}
 .footer_menu { float:right; margin:50px 0 0 0;width: 50%;}
 .footer_menu ul{ float:left; margin: 0 5px 0 55px;}
@@ -383,7 +387,7 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 .redes_sociais{float: left; width: 400px;}
 .redes_sociais ul{float: left; width: 100%;}
 .up_redes_sociais{ margin:-27px 0 0 0;}
-#logo_footer{float: right; margin: 85px 0 0 0;}
+#logo_footer{float: right; margin: 60px 0 0 0;}
 #facebook{background:url(../imagens/facebook.png) repeat-x; height:105px; width:143px; margin:17px 25px 0 0; float:left;}
 #twitter{background:url(../imagens/twitter.png) repeat-x; height:96px; width:130px; margin:28px 0 0 0; float:left;}
 #instagram{background:url(../imagens/instagram.png) repeat-x; height:66px; width:78px; margin: 0 0 0 50px; float:left;}
@@ -391,3 +395,14 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 #linkedin{background:url(../imagens/linkedin.png) repeat-x; height:77px; width:101px; margin: 0 0 0 10px; float:left;}
 #gmais{background:url(../imagens/gmais.png) repeat-x; height:85px; width:116px; margin: 0 0 0 10px; float:left;}
 #orkut{background:url(../imagens/orkut.png) repeat-x; height:68px; width:89px; margin: 20px 0 0 100px; float:left;}
+
+
+.content_center{ width:1020px; margin:auto;}
+.box_home{ width:32%; float:left;margin: 0 1.3% 0 0;}
+.box_home img{margin: auto; display: block;}
+.box_home p{width: 260px; margin: 10px auto;}
+.box_home_centro{padding: 45px 35px; float: left; width: 100%;}
+.box_home_centro img{ float:left;}
+.box_home_centro p{float: left; width: 450px; padding: 0 34px;}
+.box_home_centro_min_left{ float:left;}
+.box_home_centro_min_left h2{padding: 0; margin: 0; text-align: center; font-size: 25px;}

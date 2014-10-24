@@ -41,7 +41,7 @@
                 <li><a href="#">Pricing</a></li>
             </ul>
             <div id="logo_footer" class="logo">
-            	<a href="#" title="KcalControl">
+            	<a href="/kcal-control/KcalControl/" title="KcalControl">
                 	<h1>KcalControl</h1>
                 </a>
             </div>

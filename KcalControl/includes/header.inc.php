@@ -1,6 +1,6 @@
 <header>
 	<div id="header_menu" class="logo">
-		<a href="#" title="KcalControl">
+		<a href="/kcal-control/KcalControl/" title="KcalControl">
                 	<h1>KcalControl</h1>
                 </a>
         <ul>
