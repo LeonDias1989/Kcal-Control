@@ -8,6 +8,7 @@
 			$this->conexao = mysqli_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
 			mysqli_select_db($this->conexao, "kcal") or die("Banco não encontrado");
 			mysqli_set_charset($this->conexao, "utf8");
+			return $this->conexao;
 		}
 
 		function fecharConexao(){
@@ -61,38 +62,104 @@
 				VALUES ('$ultimoIdInserido', '$idAlimento', '$quantidade')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir a Refeição");
 			}
-
-		function selecionarRefeicao(){
-
-			/*Feito dessa meneira apenas para teste, pode ser reformulado o código com o melhor uso da OO*/
-
-			mysql_connect("localhost", "root", "") or die (mysql_error ());
-
-			// Seleciona o Banco de Dados
-			mysql_select_db("kcal") or die(mysql_error());
-
+			
+		function selecionarAlimento($nome){
+				$conexao = $this->conexao;
+				// Verifica se a variável está vazia 
+				if (empty($nome)) { 
+					$sql = "SELECT * FROM alimentos"; 
+					} 
+				else { 
+					$nome .= "%"; $sql = "SELECT * FROM alimentos WHERE nome like '$nome'"; 
+					} 
+				sleep(1); $result = mysqli_query($conexao, $sql); 
+				$cont = mysqli_affected_rows($conexao);
+				
+				// Verifica se a consulta retornou linhas 
+				if ($cont > 0) { 
+				
+				// Atribui o código HTML para montar uma tabela 
+				$tabela = "<ul>
+							"; 
+				$return = "$tabela"; 
+				
+				// Captura os dados da consulta e inseri na tabela HTML 
+				  while ($linha = mysqli_fetch_array($result)) { 
+				  $return.= "<li onclick=getLinha(". $linha["ID"] ."); class=" . $linha["ID"] . ">";
+				  $return.= "<span id=nome-alimento >" . utf8_encode($linha["Nome"]) . "</span>"; 
+				  $return.= "<div><strong>Peso:</strong><span id=peso>" . utf8_encode($linha["Peso"]) . "g</span></div>"; 
+				  $return.= "<div id=porcao><strong></strong><span>" . utf8_encode($linha["Porcao"]) . "</span></div>";
+				  $return.= "<div id=qtd><strong>Qtd:</strong><span id=quantidade class=qtd>1</span></div>"; 
+				  $return.= "<div><strong>Kcal:</strong><span id=calorias class=calorias>" . utf8_encode($linha["Calorias"]) . "			</span></div>"; 
+				  $return.= "<p class=hover_add>Adicionar</p>"; 
+				  $return.= "</li>"; } 
+				  echo $return.="</ul>"; } 
+				  else { 
+				  
+				// Se a consulta não retornar nenhum valor, exibi mensagem para o usuário 
+				echo "Não foram encontrados registros!"; }
+			}
+		function selecionarListaRefeicao($idRefeicao){
+				$sql = "SELECT id_alimento, quantidade, nome, peso, porcao,calorias FROM refeicao_alimento 
+						INNER JOIN alimentos ON refeicao_alimento.id_alimento = alimentos.id
+						WHERE id_refeicao = '$idRefeicao'"; 
+				
+				sleep(1); $result = mysqli_query($this->conexao, $sql); 
+				
+				$rs = mysqli_query($this->conexao, $sql);
+				// Atribui o código HTML para montar uma tabela 
+				$tabela = "<h1>Refeição</h1><ul class=resultado>"; 
+				$return = "$tabela"; 
+				$total = 0;
+				while($row = mysqli_fetch_array($rs)) {
+						$qtd = $row["quantidade"];
+						$cal = $row["calorias"];
+						$total_cal = $qtd * $cal;
+						$total += $total_cal;
+						
+						$return.=	"<li><span id=nome-alimento >" . utf8_encode($row["nome"]) . "</span>";
+						$return.=	"<div><strong>Peso:</strong><span id=peso>" . utf8_encode($row["peso"]) . "g</span></div>";
+						$return.=	"<div id=porcao><strong></strong><span>" . utf8_encode($row["porcao"]) . "</span></div>";
+						$return.=	"<div id=qtd><strong>Qtd:</strong><span id=quantidade class=qtd>". utf8_encode($row["quantidade"]) ."</span></div>";
+						$return.=	"<div><strong>Kcal:</strong><span id=calorias class=calorias>" . $total_cal . "</li>";}
+						 echo $return.="</ul><span class= total_kcal>" . $total . "Kcal</span>"; 
+		//echo "ID alimento:".$row['id_alimento']."</BR> ID alimento:".$row['quantidade']."</BR> ID alimento:".$row['nome']."</BR>";
+					
+			}
+		function selecionarRefeicao($data){
 			//query SQL
-			$strSQL = "SELECT refeicao.nome, refeicao.data, refeicao_alimento.quantidade, 
-			(select alimentos.nome from alimentos where refeicao_alimento.id_alimento = alimentos.id ) as alimento_nome 
-			FROM `refeicao` inner join refeicao_alimento where refeicao.id = refeicao_alimento.id_refeicao";
+			if (empty($data)) { 
+					$sql = "SELECT * FROM refeicao"; 
+					} 
+				else { 
+					$data .= "%"; 
+					$sql = "SELECT * FROM refeicao WHERE data like '$data'"; 
+					} 
+				sleep(1); $result = mysqli_query($this->conexao, $sql); 
+			
+			//$strSQL = "SELECT refeicao.nome, refeicao.data, refeicao_alimento.quantidade, 
+			//(select alimentos.nome from alimentos where refeicao_alimento.id_alimento = alimentos.id ) as alimento_nome 
+			//FROM `refeicao` inner join refeicao_alimento where refeicao.id = refeicao_alimento.id_refeicao";
 
 			// Executa a query (o recordset $rs contém o resultado da query)
-			$rs = mysql_query($strSQL);
+			$rs = mysqli_query($this->conexao, $sql);
 			
 			// Loop pelo recordset $rs
 			// Cada linha vai para um array ($row) usando mysql_fetch_array
-			while($row = mysql_fetch_array($rs)) {
+			while($row = mysqli_fetch_array($rs)) {
 
 			   // Escreve o valor da coluna FirstName (que está no array $row)
-			  echo "Nome da Refeição: ".$row['nome'] ." | Data: " .$row['data']  
-			  ." | Quantidade: " .$row['quantidade']  ." | Nome do Alimento: " .$row['alimento_nome']
-			  ."<br />";
-
-			  }
-
-			// Encerra a conexão
-			mysql_close();
-					
+			  echo "<div class=box_agenda onclick=getListaRefeicao(".$row['id'].");>
+			  			<ul>
+							<li>
+								<span>".$row['nome'] ."<span>
+							</li>
+							<li>
+								" .$row['data'] ."
+							</li>
+						</ul>
+					</div>";
+			  }		
 		}
 	}
 ?>

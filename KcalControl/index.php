@@ -25,6 +25,11 @@
           });
 
         });
+		
+		function addalimento(aux){
+  		$("."+aux).show(500);
+		$(".TB_overlay").show(500);
+}
       </script>
 </head>
 

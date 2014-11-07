@@ -1,12 +1,13 @@
 <?php 
 
 	include "classeBD.php";
-
-		$banco = new funcoesBD();
+	if (isset($_GET["txtdata"])) { 
+		$data = $_GET["txtdata"]? $_GET['txtdata'] : '';
 		
-		
-		//Esta função já está abrindo e fechando a conexão como o banco de dados
-		$selecao = $banco->selecionarRefeicao();
+		$bd = new funcoesBD();
+		$bd->conectar();
+		$bd->selecionarRefeicao($data);
+		$bd->fecharConexao();
 
-
+	}
 ?>

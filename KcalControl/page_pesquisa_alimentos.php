@@ -112,10 +112,10 @@ function addalimento(aux){
    </div>
    </div>
    
-			<ul id="nova_tabela" class="resultado content"> 
+			<ul id="nova_tabela" class="resultado content2"> 
      		</ul>
    </div> 
-   <div id="Resultado" class="resultado content"></div> 
+   <div id="Resultado" class="resultado content1"></div> 
    </div> 
  <?php include 'includes/footer.inc.php'; ?>   
    <div class="addalimento tb" id="tb2" >

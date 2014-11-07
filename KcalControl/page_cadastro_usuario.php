@@ -20,7 +20,7 @@ function addalimento(aux){
 
 <body>
  <?php include 'includes/header.inc.php'; ?>
-<div class="content">
+<div class="content_box">
 <div class="box_centro cadastro1">
 <form action="cadastro_usuario.php" method="post" >
     <div class="box_input">

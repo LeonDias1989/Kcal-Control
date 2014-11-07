@@ -47,6 +47,7 @@ header {
     border: none;
     margin-bottom: 10px;
 }
+#txtdata,
 #txtnome {
     width:480px;
     border-radius: 5px;
@@ -93,7 +94,7 @@ header {
     padding: 0;
     margin: 40px auto;
 }
-.content li {
+.resultado li {
     background: white;
     list-style-type: none;
     border: 1px solid #ccc;
@@ -106,17 +107,21 @@ header {
 	cursor:pointer;
 	font-family:arial;
 }
-#Resultado li:hover{
+.content1 li:hover{
 	transition: all 1.5s ease;
 	background:green;
 	}
-.resultado li:hover{
+.content2 li:hover{
 	transition: all 1.5s ease;
 	background:#D90000;
 	}
+#msg_pop .resultado{ float:none;overflow: scroll; max-height: 330px}
+#msg_pop .resultado li { cursor:default;}
 .hover_add{display:none;font-family: Facebook Letter Faces; font-size: 45px; padding: 0; margin: 0; text-align: center; color: white;margin: -3px 0 0 0;}
-.resultado li:hover div,
-.resultado li:hover span{ display:none;}
+.content1 li:hover div,
+.content1 li:hover span,
+.content2 li:hover div,
+.content2 li:hover span{ display:none;}
 .resultado li:hover .hover_add{ display:block;}
 
 #itens-pesquisados li {
@@ -154,7 +159,7 @@ header {
 	}
 .resultado strong{ float:left;}
 .resultado span{ float:left;}
-.resultado div{ float:left; width:80px; color:#333}
+.resultado div{ float:left; width:80px; color:#333; font-size: 15px;}
 .resultado div#porcao{ width: 205px; margin: 0 0 0 15px;}
 #qtd{width:60px;}
 #Resultado #qtd{display:none;}
@@ -165,6 +170,7 @@ header {
 	margin:0 0 9px 0;
 	width:100%;
 	font-family:arial;
+	text-align: left;
 }
 #btn-excluir {
     position: absolute;
@@ -187,7 +193,7 @@ header {
     border-radius: 10px;
 	border:none;
 }
-.content,
+.content_box,
 #Container{ width:1020px; margin:90px auto;}
 #tabela{float: right; background: #eeeeee; border: 1px solid green; margin: 30px 0;width: 530px; border-radius:5px; box-shadow: 0px 0px 13px; padding:0 0 30px 0;}
 #nova_tabela{ width:500px; float: left;padding: 10px 0 0 29px;}
@@ -202,7 +208,7 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 .pop{
 	margin-left: -290px;
 	position: fixed;
-	top: 45%;
+	top: 5%;
 	left: 50%;
 	z-index: 10002;
 	font: bold 22px Tahoma, Arial, sans-serif;
@@ -229,6 +235,7 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
     border: solid 2px green;
     border-radius: 10px;
     box-shadow: 0px 0px 70px ; 
+	float:left;
 }
 #msg_pop{ margin:15px 0;}
 #janela_add {
@@ -406,3 +413,24 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 .box_home_centro p{float: left; width: 450px; padding: 0 34px;}
 .box_home_centro_min_left{ float:left;}
 .box_home_centro_min_left h2{padding: 0; margin: 0; text-align: center; font-size: 25px;}
+
+.box_agenda{ 
+	width: 250px;
+	float: left;
+	margin: 0 3px 3px 0;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px 0;
+	cursor:pointer;
+	}
+.box_agenda li{ text-align:center;font:18px arial;}
+.box_agenda li span{font:20px arial;}
+#msg_pop .total_kcal{
+	background: green;
+	color: white;
+	padding: 10px 0;
+	float: left;
+	width: 100%;
+	margin: 15px 0 0;
+	font-size:40px;
+	}
