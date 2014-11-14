@@ -27,23 +27,38 @@ function addalimento(aux){
 			var qtd = $("#tabela "+"."+id+" .qtd").html();
 			var qtdAdd = parseInt(qtd) + 1;
 			$("#tabela "+"."+id+" .qtd").text(qtdAdd);
+			$("#tabela "+"."+id+" .qtd_centro").text(qtdAdd);
 			var caloriasTabela = $("#tabela "+"."+id+" .calorias").html();
 			var caloriasTabelaAdd = parseInt(caloriasTabela) + parseInt(calorias);
 			$("#tabela "+"."+id+" .calorias").text(caloriasTabelaAdd);
 		}else{
 			$("#tabela").css("display","block");
 			$("#Resultado "+'.'+id).clone().appendTo("#nova_tabela");
-			setTimeout(function(){$("#nova_tabela "+"."+id).attr("onclick","getExcluir("+id+");")}, 30);
-			$("#nova_tabela .hover_add").text("Remover");
+			setTimeout(function(){$("#nova_tabela "+"."+id).attr("onclick","")}, 30);
+			setTimeout(function(){$("#nova_tabela "+"."+id+" .menos").attr("onclick","getExcluir("+id+");")}, 30);
+			setTimeout(function(){$("#nova_tabela "+"."+id+" .mais").attr("onclick","getLinha("+id+");")}, 30);
+			$("#nova_tabela .hover_add").html("<div class=menos>-</div><div class=mais>+</div><div class=qtd_centro>1</div>");
 			}
 	};
 	
 	function getExcluir(id) {
 		var calorias = $("#tabela "+'.'+id+' .calorias').html();
 		var total = $("#total").html();
-		var resultado 	= parseInt(total) - parseInt(calorias);
+		var qtd = $('.'+id+" .qtd_centro").html();
+		var caloriasAlimento = parseInt(calorias) / parseInt(qtd);
+		var caloriasNoAlimento = parseInt(calorias) - parseInt(caloriasAlimento);
+		var resultado 	= parseInt(total) - parseInt(caloriasAlimento);
+		var qtdAdd = parseInt(qtd) - 1;	
 		$("#total").text(resultado);
-		$("#tabela "+"."+id).remove();	
+		if(qtdAdd > 0){
+			
+			$("#tabela "+'.'+id+' .calorias').text(caloriasNoAlimento);
+			//$("#tabela "+"."+id).remove();
+			$("#tabela "+"."+id+" .qtd").text(qtdAdd);
+			$("#tabela "+"."+id+" .qtd_centro").text(qtdAdd);
+		}else{
+			$("#tabela "+"."+id).remove();
+			}
 	};
 
 	function addRefeicao(){
