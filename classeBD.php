@@ -6,7 +6,7 @@
 		function conectar(){
 
 			$this->conexao = mysqli_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
-			mysqli_select_db($this->conexao, "kcalcontrol") or die("Banco não encontrado");
+			mysqli_select_db($this->conexao, "kcal") or die("Banco não encontrado");
 			mysqli_set_charset($this->conexao, "utf8");
 			return $this->conexao;
 		}
@@ -17,6 +17,7 @@
 
 		
 		function incluirUsuario($nome, $email, $senha, $confirmaSenha, $idade, $sexo, $peso, $altura, $objetivo){
+				
 			$consulta = "SELECT email FROM usuario WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
 
@@ -28,9 +29,29 @@
 				$inserir = "INSERT INTO usuario (nome, email, senha, idade, sexo, peso, altura, objetivo) 
 				VALUES ('$nome', '$email', '$senha', '$idade', '$sexo', '$peso', '$altura','$objetivo')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
+
 				//echo"Cadastro efetuado com sucesso !";
 				echo "usuário cadastrado!";
 			}
+		}
+
+		function alterarPesoUsuario($email, $peso){
+
+			$agora = date("Y-m-d");
+
+			//esta consulta faz o update no peso do usuário
+			$consultaUpdateUsuario = "UPDATE usuario set peso =	'$peso'	where email= '$email'";
+			mysqli_query($this->conexao, $consultaUpdateUsuario);
+			
+
+			//Esta consulta insere na tabela historico_peso a pesagem realizada no momento
+			//A ID depois será dinâmica e será obtida através da sessão do usuário
+			$inserirHistoricoPeso = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) VALUES ('$agora', 2, $peso)";
+
+			mysqli_query($this->conexao, $inserirHistoricoPeso);
+
+			echo "Peso Alterado com Sucesso";
+
 		}	
         
         function incluirAlimento($nome, $peso, $porcao, $calorias){
