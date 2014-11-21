@@ -11,9 +11,16 @@ function addalimento(aux){
   		$("."+aux).show(500);
 		$(".TB_overlay").show(500);
 }
+function addlistafavoritos(){
+	$("#msg_pop .resultado li").each(function(i) {
+		var idUnico = $(this).attr("class");
+			getLinha(idUnico);
+		});
+		$(".pop").hide(500);
+	}
 	function getLinha(id) {
 		var a = 0;
-		var calorias = $("#Resultado "+'.'+id+' .calorias').html();
+		var calorias = $(".resultado "+'.'+id+' .calorias').html();
 		var total = $("#total").html();
 		var resultado 	= parseInt(calorias) + parseInt(total);
 		$("#total").text(resultado);
@@ -27,23 +34,39 @@ function addalimento(aux){
 			var qtd = $("#tabela "+"."+id+" .qtd").html();
 			var qtdAdd = parseInt(qtd) + 1;
 			$("#tabela "+"."+id+" .qtd").text(qtdAdd);
+			$("#tabela "+"."+id+" .qtd_centro").text(qtdAdd);
 			var caloriasTabela = $("#tabela "+"."+id+" .calorias").html();
 			var caloriasTabelaAdd = parseInt(caloriasTabela) + parseInt(calorias);
 			$("#tabela "+"."+id+" .calorias").text(caloriasTabelaAdd);
 		}else{
 			$("#tabela").css("display","block");
-			$("#Resultado "+'.'+id).clone().appendTo("#nova_tabela");
-			setTimeout(function(){$("#nova_tabela "+"."+id).attr("onclick","getExcluir("+id+");")}, 30);
-			$("#nova_tabela .hover_add").text("Remover");
+			$(".resultado "+'.'+id).clone().appendTo("#nova_tabela");
+			$("#nova_tabela "+"."+id+" .hover_add").html("<div class=menos>-</div><div class=mais>+</div><div class=qtd_centro>1</div>");
+			setTimeout(function(){$("#nova_tabela "+"."+id).attr("onclick","")}, 30);
+			setTimeout(function(){$("#nova_tabela "+"."+id+" .menos").attr("onclick","getExcluir("+id+");")}, 30);
+			setTimeout(function(){$("#nova_tabela "+"."+id+" .mais").attr("onclick","getLinha("+id+");")}, 30);
+			
 			}
 	};
 	
 	function getExcluir(id) {
 		var calorias = $("#tabela "+'.'+id+' .calorias').html();
 		var total = $("#total").html();
-		var resultado 	= parseInt(total) - parseInt(calorias);
+		var qtd = $('.'+id+" .qtd_centro").html();
+		var caloriasAlimento = parseInt(calorias) / parseInt(qtd);
+		var caloriasNoAlimento = parseInt(calorias) - parseInt(caloriasAlimento);
+		var resultado 	= parseInt(total) - parseInt(caloriasAlimento);
+		var qtdAdd = parseInt(qtd) - 1;	
 		$("#total").text(resultado);
-		$("#tabela "+"."+id).remove();	
+		if(qtdAdd > 0){
+			
+			$("#tabela "+'.'+id+' .calorias').text(caloriasNoAlimento);
+			//$("#tabela "+"."+id).remove();
+			$("#tabela "+"."+id+" .qtd").text(qtdAdd);
+			$("#tabela "+"."+id+" .qtd_centro").text(qtdAdd);
+		}else{
+			$("#tabela "+"."+id).remove();
+			}
 	};
 
 	function addRefeicao(){
@@ -86,7 +109,7 @@ function addalimento(aux){
 
 </head>
 
-<body>
+<body id="alimento">
  <?php include 'includes/header.inc.php'; ?>
    <div id="Container"> 
    <div id="Pesquisar"> 
@@ -94,6 +117,8 @@ function addalimento(aux){
    <input type="text"  name="txtnome" id="txtnome" placeholder="O que você comeu hoje ?">
    <input type="button" name="btnPesquisar" id="btn-busca" value="Pesquisar" onclick="getDados();"/> 
    <input type="button" value="add" id="btn-add" onclick="addalimento('addalimento');">
+   <input type="button" value="" id="btn-favoritos" onclick="getListafavorito();">
+   
    </div> 
    <div id="tabela">
    <h1 class="titulo"> Refeição</h1>

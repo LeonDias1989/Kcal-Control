@@ -11,7 +11,7 @@
 
 </script>
 </head>
-<body>
+<body id="refeicao">
  <?php include 'includes/header.inc.php'; ?>
 	<div id="Container">
        <div id="Pesquisar"> 

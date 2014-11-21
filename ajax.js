@@ -101,3 +101,57 @@ function getListaRefeicao(idRefeicao) {
 			} 
 	} 
 }; xmlreq.send(null); }
+
+/** * Função para enviar os dados */ 
+function getfavoritar(idRefeicao) { 
+	// Declaração de Variáveis 
+	var result = document.getElementById("msg_pop"); 
+	var xmlreq = CriaRequest(); 
+
+	// Exibi a imagem de progresso 
+	result.innerHTML = '<img src="Progresso1.gif"/>'; 
+
+	// Iniciar uma requisição 
+	xmlreq.open("GET", "favoritar.php?txtidRefeicao=" + idRefeicao, true);
+	// Atribui uma função para ser executada sempre que houver uma mudança de ado 
+	xmlreq.onreadystatechange = function(){ 
+
+	// Verifica se foi concluído com sucesso e a conexão fechada (readyState=4) 
+	if (xmlreq.readyState == 4) { 
+
+		// Verifica se o arquivo foi encontrado com sucesso 
+		if (xmlreq.status == 200) { 
+		result.innerHTML = xmlreq.responseText; 
+		$(".pop").show(500);
+		}else{ 
+			result.innerHTML = "Erro: " + xmlreq.statusText; 
+			} 
+	} 
+}; xmlreq.send(null); }
+
+/** * Função para enviar os dados */ 
+function getListafavorito() { 
+	// Declaração de Variáveis 
+	var result = document.getElementById("msg_pop"); 
+	var xmlreq = CriaRequest(); 
+
+	// Exibi a imagem de progresso 
+	result.innerHTML = '<img src="Progresso1.gif"/>'; 
+
+	// Iniciar uma requisição 
+	xmlreq.open("GET", "listafavoritos.php", true);
+	// Atribui uma função para ser executada sempre que houver uma mudança de ado 
+	xmlreq.onreadystatechange = function(){ 
+
+	// Verifica se foi concluído com sucesso e a conexão fechada (readyState=4) 
+	if (xmlreq.readyState == 4) { 
+
+		// Verifica se o arquivo foi encontrado com sucesso 
+		if (xmlreq.status == 200) { 
+		result.innerHTML = xmlreq.responseText; 
+		$(".pop").show(500);
+		}else{ 
+			result.innerHTML = "Erro: " + xmlreq.statusText; 
+			} 
+	} 
+}; xmlreq.send(null); }
