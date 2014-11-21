@@ -67,7 +67,7 @@ header {
 	cursor: pointer;
 }
 #Pesquisar{
-	width: 560px;
+	width: 610px;
 	margin:15px auto;
 	
 	}
@@ -449,3 +449,17 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 	margin: 15px 0 0;
 	font-size:40px;
 	}
+#btn-favoritos{background:url(../imagens/star2.png) no-repeat; height:49px; width:49px; float:right; cursor:pointer; border:none;}
+.star{background:url(../imagens/star.png) no-repeat; height:40px; width: 152px;display: block;margin: 15px auto 5px;padding: 0 0 0 45px; font-size: 35px; cursor:pointer;}
+.star:hover{ text-decoration:underline;}
+.lista_favoritos{width: 510px; margin: 20px auto;}
+#alimento .star,
+#msg_pop .hover_add,
+#refeicao .hover_add,
+#refeicao .addlista{ display:none;}
+
+
+#alimento .addlista{ display:block;}
+
+.addlista{background:url(../imagens/add2.png) no-repeat; height:40px; width: 215px;display: block;margin: 15px auto 5px;padding: 0 0 0 45px; font-size: 35px; cursor:pointer;}
+.addlista:hover{ text-decoration:underline;}
