@@ -6,7 +6,7 @@
 		function conectar(){
 
 			$this->conexao = mysqli_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
-			mysqli_select_db($this->conexao, "kcal_2") or die("Banco não encontrado");
+			mysqli_select_db($this->conexao, "kcal") or die("Banco não encontrado");
 			mysqli_set_charset($this->conexao, "utf8");
 			return $this->conexao;
 		}
@@ -16,7 +16,7 @@
 		}	
 
 		
-		function incluirUsuario($nome, $email, $senha, $confirmaSenha, $idade, $sexo, $peso, $altura, $bf, $hobby, $objetivo, $esporte){
+		function incluirUsuario($nome, $email, $sexo, $senha, $confirmaSenha, $altura, $peso, $idade , $objetivo){
 			$consulta = "SELECT email FROM usuario WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
 
@@ -25,8 +25,8 @@
 			}else if($senha != $confirmaSenha){
 				echo "As senhas não conferem";
 			}else{			
-				$inserir = "INSERT INTO usuario (nome, email, senha, idade, sexo, peso, altura, bf, hobby, objetivo, esporte) 
-				VALUES ('$nome', '$email', '$senha', '$idade', '$sexo', '$peso', '$altura', '$bf', '$hobby', '$objetivo', '$esporte')";
+				$inserir = "INSERT INTO usuario (nome, email, sexo, senha, altura, peso, idade, objetivo) 
+				VALUES ('$nome', '$email', '$sexo', '$senha', '$altura', '$peso', '$idade', '$objetivo')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
 				echo "usuário cadastrado!";
