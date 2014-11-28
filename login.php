@@ -11,9 +11,11 @@ include 'classeBD.php';
                 if (mysqli_num_rows($verifica)<=0){
                     echo"<script language='javascript' type='text/javascript'>alert(email = '$email'); alert(senha = '$senha');window.location.href='login.html';</script>";
                     die();
+
                 }else{
                     setcookie("email",$email);
                     header("Location:index_teste.php");
+                    session_start();
                 }
         }
 ?>

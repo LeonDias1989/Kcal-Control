@@ -107,6 +107,8 @@ function addlistafavoritos(){
 	
 </script>
 
+	<?php require "valida_login.php" ?>
+
 </head>
 
 <body id="alimento">
