@@ -1,6 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+	<?php require "valida_login.php"; ?>
+
 <link href="css/style_pesquisa.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="ajax.js"></script> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -107,12 +110,11 @@ function addlistafavoritos(){
 	
 </script>
 
-	<?php require "valida_login.php" ?>
 
 </head>
 
 <body id="alimento">
- <?php include 'includes/header.inc.php'; ?>
+ <?php if(!isset($_SESSION["id"])){include 'includes/header.inc.php';}else{include 'includes/headerLogout.inc.php';} ?>
    <div id="Container"> 
    <div id="Pesquisar"> 
    <h1 class="titulo"> Pesquisa de Alimentos</h1>

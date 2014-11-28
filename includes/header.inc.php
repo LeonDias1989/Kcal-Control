@@ -1,6 +1,6 @@
 <header>
 	<div id="header_menu" class="logo">
-		<a href="/kcal-control/KcalControl/" title="KcalControl">
+		<a href="/kcal-control" title="KcalControl">
                 	<h1>KcalControl</h1>
                 </a>
         <ul>
@@ -18,7 +18,7 @@
         <span id="btn-fechar" onclick="$('.tb').fadeOut()" class="bt_excluir3"></span>
         <h2>Entre</h2>
 
-     <form method="POST" action="login.php">
+     <form method="POST" action="autenticacao.php">
         <input method="POST" type="text" placeholder="Email" id="email" name="email"/>    
         <input method="POST" type="password" placeholder="Senha" id="senha" name="senha"</input> 
         <input type="submit" value="Entrar" id="btn_entrar" id="entrar" name="entrar"/> 
