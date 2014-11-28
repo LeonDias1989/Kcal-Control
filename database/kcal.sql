@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Out-2014 às 03:20
--- Versão do servidor: 5.6.20
--- PHP Version: 5.5.15
+-- Generation Time: 28-Nov-2014 às 12:16
+-- Versão do servidor: 5.6.16
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `alimentos` (
-`ID` int(10) NOT NULL,
+  `ID` int(10) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(100) CHARACTER SET latin1 NOT NULL,
   `Peso` int(15) NOT NULL,
   `Porcao` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `Calorias` int(15) NOT NULL
+  `Calorias` int(15) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4155 ;
 
 --
@@ -4206,9 +4207,10 @@ INSERT INTO `alimentos` (`ID`, `Nome`, `Peso`, `Porcao`, `Calorias`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `exercicios` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(75) NOT NULL,
-  `calorias` int(10) unsigned NOT NULL COMMENT 'Perda de calorias a cada 30 min'
+  `calorias` int(10) unsigned NOT NULL COMMENT 'Perda de calorias a cada 30 min',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=111 ;
 
 --
@@ -4330,111 +4332,134 @@ INSERT INTO `exercicios` (`id`, `nome`, `calorias`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `historico_peso`
+--
+
+CREATE TABLE IF NOT EXISTS `historico_peso` (
+  `data_pesagem` date NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `peso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `historico_peso`
+--
+
+INSERT INTO `historico_peso` (`data_pesagem`, `id_usuario`, `peso`) VALUES
+('2014-11-28', 2, 50),
+('2014-11-28', 2, 63);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `refeicao`
 --
 
 CREATE TABLE IF NOT EXISTS `refeicao` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `data` date NOT NULL,
-  `id_usuario` int(255) DEFAULT NULL
+  `id_usuario` int(255) DEFAULT NULL,
+  `favorito` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=97 ;
 
 --
 -- Extraindo dados da tabela `refeicao`
 --
 
-INSERT INTO `refeicao` (`id`, `nome`, `data`, `id_usuario`) VALUES
-(7, 'refeicao', '2014-10-23', 1),
-(8, 'refeicao', '2014-10-03', 1),
-(9, 'refeicao', '2014-10-16', 1),
-(10, 'refeicao', '0000-00-00', 1),
-(11, 'refeicao', '0000-00-00', 1),
-(12, 'refeicao', '2014-10-10', 1),
-(13, 'refeicao', '2014-10-20', 1),
-(14, 'refeicao', '2014-10-13', 1),
-(15, 'refeicao', '0000-00-00', 1),
-(16, 'refeicao', '0000-00-00', 1),
-(17, 'refeicao', '2014-10-13', 1),
-(18, 'refeicao', '2014-10-14', 1),
-(19, 'refeicao', '2014-10-21', 1),
-(20, 'refeicao', '0000-00-00', 1),
-(21, 'refeicao', '2014-10-01', 1),
-(22, 'refeicao', '2014-10-02', 1),
-(23, 'refeicao', '2014-10-06', 1),
-(24, 'refeicao', '0000-00-00', 1),
-(25, 'refeicao', '2014-10-21', 1),
-(26, 'refeicao', '0000-00-00', 1),
-(27, 'refeicao', '0000-00-00', 1),
-(28, 'refeicao', '2014-10-07', 1),
-(29, 'refeicao', '2014-10-30', 1),
-(30, 'refeicao', '2014-10-17', 1),
-(31, 'refeicao', '2014-10-31', 1),
-(32, 'refeicao', '0000-00-00', 1),
-(33, 'refeicao', '2014-10-16', 1),
-(34, 'refeicao', '0000-00-00', 1),
-(35, 'refeicao', '2014-10-12', 1),
-(36, 'refeicao', '2014-10-07', 2),
-(37, 'refeicao', '2014-10-00', 2),
-(38, 'refeicao', '2014-10-03', 2),
-(39, 'refeicao', '0000-00-00', 2),
-(40, 'refeicao', '0000-00-00', 2),
-(41, 'refeicao', '2014-10-05', 2),
-(42, 'refeicao', '2014-10-09', 2),
-(43, 'refeicao', '2014-10-21', 2),
-(44, 'refeicao', '0000-00-00', 2),
-(45, 'refeicao', '0000-00-00', 2),
-(46, 'refeicao', '2014-10-09', 2),
-(47, 'refeicao', '0000-00-00', 2),
-(48, 'refeicao', '0000-00-00', 2),
-(49, 'refeicao', '0000-00-00', 2),
-(50, 'refeicao', '2014-10-23', 2),
-(51, 'refeicao', '0000-00-00', 2),
-(52, 'refeicao', '2014-10-05', 2),
-(53, 'refeicao', '0000-00-00', 2),
-(54, 'refeicao', '0000-00-00', 2),
-(55, 'refeicao', '2014-10-10', 2),
-(56, 'refeicao', '0000-00-00', 2),
-(57, 'refeicao', '0000-00-00', 2),
-(58, 'refeicao', '0000-00-00', 2),
-(59, 'refeicao', '2014-10-01', 2),
-(60, 'refeicao', '0000-00-00', 2),
-(61, 'refeicao', '2014-10-24', 2),
-(62, 'refeicao', '0000-00-00', 2),
-(63, 'refeicao', '0000-00-00', 2),
-(64, 'refeicao', '2014-10-29', 2),
-(65, 'refeicao', '2014-10-14', 2),
-(66, 'refeicao', '2014-10-13', 2),
-(67, 'refeicao', '0000-00-00', 2),
-(68, 'refeicao', '2014-10-09', 2),
-(69, 'refeicao', '0000-00-00', 2),
-(70, 'refeicao', '0000-00-00', 2),
-(71, 'refeicao', '2014-10-04', 2),
-(72, 'refeicao', '2014-10-04', 2),
-(73, 'refeicao', '0000-00-00', 2),
-(74, 'refeicao', '2014-10-04', 2),
-(75, 'refeicao', '0000-00-00', 2),
-(76, 'refeicao', '2014-10-28', 2),
-(77, 'refeicao', '0000-00-00', 2),
-(78, 'refeicao', '0000-00-00', 2),
-(79, 'refeicao', '2014-10-07', 2),
-(80, 'refeicao', '0000-00-00', 2),
-(81, 'refeicao', '0000-00-00', 2),
-(82, 'refeicao', '0000-00-00', 2),
-(83, 'refeicao', '0000-00-00', 2),
-(84, 'refeicao', '0000-00-00', 2),
-(85, 'refeicao', '2014-10-00', 2),
-(86, 'refeicao', '0000-00-00', 2),
-(87, 'refeicao', '2014-10-21', 2),
-(88, 'refeicao', '2014-10-10', 2),
-(89, 'refeicao', '2014-10-27', 2),
-(90, 'refeicao', '2014-10-01', 2),
-(91, 'refeicao', '2014-10-10', 2),
-(92, '', '0000-00-00', 2),
-(93, '', '2014-10-00', 2),
-(94, '', '0000-00-00', 2),
-(95, '', '2014-10-22', 2),
-(96, 'teste', '2014-10-22', 2);
+INSERT INTO `refeicao` (`id`, `nome`, `data`, `id_usuario`, `favorito`) VALUES
+(7, 'refeicao', '2014-10-23', 1, 0),
+(8, 'refeicao', '2014-10-03', 1, 0),
+(9, 'refeicao', '2014-10-16', 1, 0),
+(10, 'refeicao', '0000-00-00', 1, 0),
+(11, 'refeicao', '0000-00-00', 1, 0),
+(12, 'refeicao', '2014-10-10', 1, 0),
+(13, 'refeicao', '2014-10-20', 1, 0),
+(14, 'refeicao', '2014-10-13', 1, 0),
+(15, 'refeicao', '0000-00-00', 1, 0),
+(16, 'refeicao', '0000-00-00', 1, 0),
+(17, 'refeicao', '2014-10-13', 1, 0),
+(18, 'refeicao', '2014-10-14', 1, 0),
+(19, 'refeicao', '2014-10-21', 1, 0),
+(20, 'refeicao', '0000-00-00', 1, 0),
+(21, 'refeicao', '2014-10-01', 1, 0),
+(22, 'refeicao', '2014-10-02', 1, 0),
+(23, 'refeicao', '2014-10-06', 1, 0),
+(24, 'refeicao', '0000-00-00', 1, 0),
+(25, 'refeicao', '2014-10-21', 1, 0),
+(26, 'refeicao', '0000-00-00', 1, 0),
+(27, 'refeicao', '0000-00-00', 1, 0),
+(28, 'refeicao', '2014-10-07', 1, 0),
+(29, 'refeicao', '2014-10-30', 1, 0),
+(30, 'refeicao', '2014-10-17', 1, 0),
+(31, 'refeicao', '2014-10-31', 1, 0),
+(32, 'refeicao', '0000-00-00', 1, 0),
+(33, 'refeicao', '2014-10-16', 1, 0),
+(34, 'refeicao', '0000-00-00', 1, 0),
+(35, 'refeicao', '2014-10-12', 1, 0),
+(36, 'refeicao', '2014-10-07', 2, 0),
+(37, 'refeicao', '2014-10-00', 2, 0),
+(38, 'refeicao', '2014-10-03', 2, 0),
+(39, 'refeicao', '0000-00-00', 2, 0),
+(40, 'refeicao', '0000-00-00', 2, 0),
+(41, 'refeicao', '2014-10-05', 2, 0),
+(42, 'refeicao', '2014-10-09', 2, 0),
+(43, 'refeicao', '2014-10-21', 2, 0),
+(44, 'refeicao', '0000-00-00', 2, 0),
+(45, 'refeicao', '0000-00-00', 2, 0),
+(46, 'refeicao', '2014-10-09', 2, 0),
+(47, 'refeicao', '0000-00-00', 2, 0),
+(48, 'refeicao', '0000-00-00', 2, 0),
+(49, 'refeicao', '0000-00-00', 2, 0),
+(50, 'refeicao', '2014-10-23', 2, 0),
+(51, 'refeicao', '0000-00-00', 2, 0),
+(52, 'refeicao', '2014-10-05', 2, 0),
+(53, 'refeicao', '0000-00-00', 2, 0),
+(54, 'refeicao', '0000-00-00', 2, 0),
+(55, 'refeicao', '2014-10-10', 2, 0),
+(56, 'refeicao', '0000-00-00', 2, 0),
+(57, 'refeicao', '0000-00-00', 2, 0),
+(58, 'refeicao', '0000-00-00', 2, 0),
+(59, 'refeicao', '2014-10-01', 2, 0),
+(60, 'refeicao', '0000-00-00', 2, 0),
+(61, 'refeicao', '2014-10-24', 2, 0),
+(62, 'refeicao', '0000-00-00', 2, 0),
+(63, 'refeicao', '0000-00-00', 2, 0),
+(64, 'refeicao', '2014-10-29', 2, 0),
+(65, 'refeicao', '2014-10-14', 2, 0),
+(66, 'refeicao', '2014-10-13', 2, 0),
+(67, 'refeicao', '0000-00-00', 2, 0),
+(68, 'refeicao', '2014-10-09', 2, 0),
+(69, 'refeicao', '0000-00-00', 2, 0),
+(70, 'refeicao', '0000-00-00', 2, 0),
+(71, 'refeicao', '2014-10-04', 2, 0),
+(72, 'refeicao', '2014-10-04', 2, 0),
+(73, 'refeicao', '0000-00-00', 2, 0),
+(74, 'refeicao', '2014-10-04', 2, 0),
+(75, 'refeicao', '0000-00-00', 2, 0),
+(76, 'refeicao', '2014-10-28', 2, 0),
+(77, 'refeicao', '0000-00-00', 2, 0),
+(78, 'refeicao', '0000-00-00', 2, 0),
+(79, 'refeicao', '2014-10-07', 2, 0),
+(80, 'refeicao', '0000-00-00', 2, 0),
+(81, 'refeicao', '0000-00-00', 2, 0),
+(82, 'refeicao', '0000-00-00', 2, 0),
+(83, 'refeicao', '0000-00-00', 2, 0),
+(84, 'refeicao', '0000-00-00', 2, 0),
+(85, 'refeicao', '2014-10-00', 2, 0),
+(86, 'refeicao', '0000-00-00', 2, 0),
+(87, 'refeicao', '2014-10-21', 2, 0),
+(88, 'refeicao', '2014-10-10', 2, 0),
+(89, 'refeicao', '2014-10-27', 2, 0),
+(90, 'refeicao', '2014-10-01', 2, 0),
+(91, 'refeicao', '2014-10-10', 2, 0),
+(92, '', '0000-00-00', 2, 0),
+(93, '', '2014-10-00', 2, 0),
+(94, '', '0000-00-00', 2, 0),
+(95, '', '2014-10-22', 2, 0),
+(96, 'teste', '2014-10-22', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -4528,70 +4553,25 @@ INSERT INTO `refeicao_alimento` (`id_refeicao`, `id_alimento`, `quantidade`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-`id` int(10) unsigned NOT NULL,
-  `nome` varchar(70) NOT NULL,
-  `idade` int(10) unsigned NOT NULL,
-  `peso` int(10) unsigned NOT NULL,
-  `altura` float unsigned NOT NULL,
-  `email` varchar(130) NOT NULL,
-  `sobrenome` varchar(255) NOT NULL,
-  `sexo` tinyint(1) NOT NULL,
-  `data_nascimento` date NOT NULL,
-  `senha` varchar(8) NOT NULL DEFAULT 'abcd1234' COMMENT 'Senha Inicial abcd1234'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `sexo` varchar(100) NOT NULL,
+  `senha` varchar(100) NOT NULL,
+  `altura` int(100) NOT NULL,
+  `peso` int(100) NOT NULL,
+  `idade` int(100) NOT NULL,
+  `objetivo` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Indexes for dumped tables
+-- Extraindo dados da tabela `usuario`
 --
 
---
--- Indexes for table `alimentos`
---
-ALTER TABLE `alimentos`
- ADD PRIMARY KEY (`ID`);
+INSERT INTO `usuario` (`id`, `nome`, `email`, `sexo`, `senha`, `altura`, `peso`, `idade`, `objetivo`) VALUES
+(1, 'Testando', 'teste@testando.com', 'M', 'd41d8cd98f00b204e9800998ecf8427e', 175, 63, 18, 'Ganhar');
 
---
--- Indexes for table `exercicios`
---
-ALTER TABLE `exercicios`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `refeicao`
---
-ALTER TABLE `refeicao`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `usuario`
---
-ALTER TABLE `usuario`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `alimentos`
---
-ALTER TABLE `alimentos`
-MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4155;
---
--- AUTO_INCREMENT for table `exercicios`
---
-ALTER TABLE `exercicios`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
---
--- AUTO_INCREMENT for table `refeicao`
---
-ALTER TABLE `refeicao`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
---
--- AUTO_INCREMENT for table `usuario`
---
-ALTER TABLE `usuario`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

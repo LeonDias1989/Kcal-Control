@@ -184,5 +184,26 @@
 					</div>";
 			  }		
 		}
+
+
+		function alterarPesoUsuario($email, $peso){
+
+			$agora = date("Y-m-d");
+
+			//esta consulta faz o update no peso do usuário
+			$consultaUpdateUsuario = "UPDATE usuario set peso =	'$peso'	where email= '$email'";
+			mysqli_query($this->conexao, $consultaUpdateUsuario);
+		
+			//Esta consulta insere na tabela historico_peso a pesagem realizada no momento
+			//A ID depois será dinâmica e será obtida através da sessão do usuário
+			$inserirHistoricoPeso = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) VALUES ('$agora', 2, $peso)";
+
+			mysqli_query($this->conexao, $inserirHistoricoPeso);
+
+			echo "Peso Alterado com Sucesso";
+
+ 		}
+
+
 	}
 ?>
