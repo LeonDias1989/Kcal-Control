@@ -185,7 +185,7 @@
 			  }		
 		}
 
-
+/*
 		function alterarPesoUsuario($email, $peso){
 
 			$agora = date("Y-m-d");
@@ -203,7 +203,46 @@
 			echo "Peso Alterado com Sucesso";
 
  		}
+ 				function buscaPeso($data){
+			//query SQL
+			if (empty($data)) { 
+					$sql = "SELECT peso FROM historico_peso"; 
+					} 
+				else { 
+					$data .= "%"; 
+					$sql = "SELECT peso FROM historico_peso WHERE data like '$data'"; 
+					} 
+				sleep(1); $result = mysqli_query($this->conexao, $sql); 
 
+			$rs = mysqli_query($this->conexao, $sql);
+
+			  	
+		}
+*/
+		function alterarPesoUsuario($email, $peso){
+
+			$agora = date("Y-m-d");
+
+			//esta consulta faz o update no peso do usuário
+			$consultaUpdateUsuario = "UPDATE usuario set peso =	'$peso'	where email= '$email'";
+			mysqli_query($this->conexao, $consultaUpdateUsuario);
+		
+			// --> 
+			$sql = "SELECT id FROM usuario WHERE email='$email'";
+			$result = mysqli_query($this->conexao, $sql);
+			$id_usuario = 0;
+			while ($result && $line = mysqli_fetch_object($result)) {
+				$id_usuario = $line->id;
+			}
+			
+			$sql = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) VALUES ('$agora', $id_usuario, $peso)";
+			mysqli_query($this->conexao, $sql);
+
+			
+
+			echo "Peso Alterado com Sucesso";
+
+ 		}
 
 	}
 ?>
