@@ -463,3 +463,5 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 
 .addlista{background:url(../imagens/add2.png) no-repeat; height:40px; width: 215px;display: block;margin: 15px auto 5px;padding: 0 0 0 45px; font-size: 35px; cursor:pointer;}
 .addlista:hover{ text-decoration:underline;}
+
+#box-peso .box_input {margin: auto; width: 500px; padding: 100px 0 200px;}

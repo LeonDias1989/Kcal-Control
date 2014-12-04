@@ -1,39 +1,32 @@
-
-<?php
-
-require "valida_login.php"; 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kcal";
-$teste = $_SESSION['id'];
-
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-//print_r($_SESSION);
-
-$sql = "SELECT id_usuario, data_pesagem, peso FROM historico_peso where id_usuario =". $_SESSION["ID_USUARIO"];
-////$sql = "SELECT id_usuario, data_pesagem, peso FROM historico_peso where id_usuario = '$_SESSION[id]'";
-$result = $conn->query($sql); // !!!! testa  la
+<!DOCTYPE html/>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/style_pesquisa.css" rel="stylesheet" type="text/css">
+	<?php require "valida_login.php"; ?>
+	<?php include "classeBD.php";?>
+	
+</head>
+<body>
+	<?php include 'includes/header.inc.php'; ?>
 
 
+<div class="content_center">
+	<div class="box-center">
+		<div class="box_input">
+	
+		<?php
+			$bd = new FuncoesBD();
+			$bd->conectar();
+			$bd->grafico();
+		?>
 
-if ($result->num_rows != 0) {
-    echo "<table><tr><th> ID </th><th> Data </th><th> Peso </th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" .$row["id_usuario"]."</td><td>".$row["data_pesagem"]."</td><td>".$row["peso"]. "</td></tr>";
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-?>
+
+	</div>
+	</div>
+	</div>
+
+
+<?php include 'includes/footer.inc.php'; ?>
+</body>
+</html>

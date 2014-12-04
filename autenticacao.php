@@ -28,7 +28,7 @@ if(isset($_POST['entrar'])){
 		date_default_timezone_set("America/Sao_Paulo");
 		$_SESSION["datahora"] = date("d/m/Y H:i:s");
 		while ($line = mysqli_fetch_object($result)) {
-				$_SESSION["ID_USUARIO"] = $line->id;
+				$_SESSION["userID"] = $line->id;
 		}
 		//print_r($_SESSION);
 		header('location:page_pesquisa_alimentos.php');

@@ -14,8 +14,8 @@
 		function fecharConexao(){
 			mysqli_close($this->conexao);
 		}	
-
-		
+			
+	
 		function incluirUsuario($nome, $email, $sexo, $senha, $confirmaSenha, $altura, $peso, $idade , $objetivo){
 			$consulta = "SELECT email FROM usuario WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
@@ -57,9 +57,9 @@
 				return $ultimoIdRefeicao;
 			}
 			
-		function incluirRefeicaoAlimento($ultimoIdInserido, $idAlimento, $quantidade){
-				$inserir = "INSERT INTO refeicao_alimento (id_refeicao ,id_alimento, quantidade) 
-				VALUES ('$ultimoIdInserido', '$idAlimento', '$quantidade')";
+		function incluirRefeicaoAlimento($id_usuario, $ultimoIdInserido, $idAlimento, $quantidade){
+				$inserir = "INSERT INTO refeicao_alimento (id_refeicao ,id_alimento, quantidade, $id_usuario) 
+				VALUES ('$ultimoIdInserido', '$idAlimento', '$quantidade', '$id_usuario')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir a Refeição");
 			}
 		function favoritar($idRefeicao){
@@ -183,6 +183,25 @@
 						</ul>
 					</div>";
 			  }		
+		}
+
+		function grafico(){
+			$sql = "SELECT id_usuario, data_pesagem, peso FROM historico_peso where id_usuario =". $_SESSION["userID"];
+			////$sql = "SELECT id_usuario, data_pesagem, peso FROM historico_peso where id_usuario = '$_SESSION[id]'";
+			$result = mysqli_query($this->conexao, $sql); // !!!! testa  la
+
+
+
+			if ($result->num_rows != 0) {
+			    echo "<table><tr><th> ID </th><th> Data </th><th> Peso </th></tr>";
+			    // output data of each row
+			    while($row = $result->fetch_assoc()) {
+			        echo "<tr><td>" .$row["id_usuario"]."</td><td>".$row["data_pesagem"]."</td><td>".$row["peso"]. "</td></tr>";
+			    }
+			} else {
+			    echo "0 results";
+			}
+			$this->fecharConexao();
 		}
 
 /*
