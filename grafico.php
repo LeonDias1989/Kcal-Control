@@ -12,21 +12,22 @@
 
 
 <div class="content_center">
-	<div class="box-center">
-		<div class="box_input">
+	<div class="box-center" id="box-peso">
+		<div id="" class="tabela-peso">
+
+			<h2>Tabela de Peso</h2>
 	
-		<?php
-			$bd = new FuncoesBD();
-			$bd->conectar();
-			$bd->grafico();
-		?>
+			<?php
+				$bd = new FuncoesBD();
+				$bd->conectar();
+				$bd->grafico();
+			?>
 
-
+		</div>
 	</div>
-	</div>
-	</div>
+</div>
 
 
-<?php include 'includes/footer.inc.php'; ?>
+
 </body>
 </html>

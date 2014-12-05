@@ -465,3 +465,9 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 .addlista:hover{ text-decoration:underline;}
 
 #box-peso .box_input {margin: auto; width: 500px; padding: 100px 0 200px;}
+
+#box-central .box_input {margin: auto; width: 500px; padding: 100px 600px 200px;}
+
+.tabela-peso {margin: auto; width: 220px; padding: 100px 0 200px;}
+
+#box-esq .box-info{margin: auto;}
