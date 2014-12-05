@@ -29,7 +29,7 @@
 				VALUES ('$nome', '$email', '$sexo', '$senha', '$altura', '$peso', '$idade', '$objetivo')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
-				echo "usuário cadastrado!";
+				header('location:page_pesquisa_alimentos.php');
 			}
 		}	
         
@@ -48,18 +48,18 @@
 			}
 		}
 		
-		function incluirRefeicao($nome){
+		function incluirRefeicao($nome, $id_usuario){
 			 	$hoje = date("Y-m-d");
 				$inserir = "INSERT INTO refeicao (nome, data, id_usuario) 
-				VALUES ('$nome', '$hoje', '2')";
+				VALUES ('$nome', '$hoje', '$id_usuario')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir a Refeição");
 				$ultimoIdRefeicao = $this->conexao->insert_id;
 				return $ultimoIdRefeicao;
 			}
 			
-		function incluirRefeicaoAlimento($id_usuario, $ultimoIdInserido, $idAlimento, $quantidade){
-				$inserir = "INSERT INTO refeicao_alimento (id_refeicao ,id_alimento, quantidade, $id_usuario) 
-				VALUES ('$ultimoIdInserido', '$idAlimento', '$quantidade', '$id_usuario')";
+		function incluirRefeicaoAlimento($ultimoIdInserido, $idAlimento, $quantidade){
+				$inserir = "INSERT INTO refeicao_alimento (id_refeicao ,id_alimento, quantidade) 
+				VALUES ('$ultimoIdInserido', '$idAlimento', '$quantidade')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir a Refeição");
 			}
 		function favoritar($idRefeicao){
@@ -113,7 +113,7 @@
 				
 				$rs = mysqli_query($this->conexao, $sql);
 				// Atribui o código HTML para montar uma tabela 
-				$tabela = "<h1>Refeição</h1><ul class=resultado>"; 
+				$tabela = "<h1>Refeição</h1><ul class='resultado content1'>"; 
 				$return = "$tabela"; 
 				$total = 0;
 				while($row = mysqli_fetch_array($rs)) {
@@ -157,10 +157,10 @@
 			  echo  $return;
 			
 			}
-		function selecionarRefeicao($data){
+		function selecionarRefeicao($data, $idUsuario){
 			//query SQL
 			if (empty($data)) { 
-					$sql = "SELECT * FROM refeicao"; 
+					$sql = "SELECT * FROM refeicao WHERE id_usuario = '$idUsuario'"; 
 					} 
 				else { 
 					$data .= "%"; 

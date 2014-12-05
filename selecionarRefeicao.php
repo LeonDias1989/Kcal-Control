@@ -11,7 +11,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script language="JavaScript">
 
-
+var idUsuario = "<?php echo $idUsuario?>";
 </script>
 </head>
 <body id="refeicao">

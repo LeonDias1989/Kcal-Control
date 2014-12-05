@@ -3,15 +3,14 @@ include 'classeBD.php';
 	
 	$nome = $_POST['nome'];
     $vetor =  json_decode($_POST['alimentos']);
+	$id_usuario = $_POST['id'];
 
-	
 	 if (isset($_POST['nome'])) {
 			$bd = new funcoesBD();
 			$bd->conectar();
-			$idUser = $_SESSION['userID'];
-			$ultimoIdInserido = $bd->incluirRefeicao($nome);
+			$ultimoIdInserido = $bd->incluirRefeicao($nome, $id_usuario);
 			foreach ($vetor as $v) { 
-				$bd->incluirRefeicaoAlimento($idUser, $ultimoIdInserido, $v->id ,$v->qtd);
+				$bd->incluirRefeicaoAlimento($ultimoIdInserido, $v->id ,$v->qtd);
 			}
 			$bd->fecharConexao();
 			echo "Refeição cadastrada com sucesso !";

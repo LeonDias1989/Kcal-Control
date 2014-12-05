@@ -3,6 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/style_pesquisa.css" rel="stylesheet" type="text/css">
+<?php 
+	session_start();
+ ?>
 <script type="text/javascript" src="ajax.js"></script> 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- bjqs.css contains the *essential* css needed for the slider to work -->
@@ -34,7 +37,7 @@
 </head>
 
 <body>
- <?php include 'includes/header.inc.php'; ?>
+ <?php if(!isset($_SESSION["id"])){include 'includes/header.inc.php';}else{include 'includes/headerLogout.inc.php';} ?>
  	 <div id="container">
       <!--  Outer wrapper for presentation only, this can be anything you like -->
       <div id="banner-fade">
