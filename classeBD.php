@@ -29,7 +29,7 @@
 				VALUES ('$nome', '$email', '$sexo', '$senha', '$altura', '$peso', '$idade', '$objetivo')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
-				echo "usuário cadastrado!";
+				header('location:page_pesquisa_alimentos.php');
 			}
 		}	
         
@@ -113,7 +113,7 @@
 				
 				$rs = mysqli_query($this->conexao, $sql);
 				// Atribui o código HTML para montar uma tabela 
-				$tabela = "<h1>Refeição</h1><ul class=resultado>"; 
+				$tabela = "<h1>Refeição</h1><ul class='resultado content1'>"; 
 				$return = "$tabela"; 
 				$total = 0;
 				while($row = mysqli_fetch_array($rs)) {

@@ -107,7 +107,7 @@ header {
 	cursor:pointer;
 	font-family:arial;
 }
-.content1 li:hover{
+#Container .content1 li:hover{
 	transition: all 1.5s ease;
 	background:green;
 	}

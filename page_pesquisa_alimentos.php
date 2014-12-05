@@ -23,7 +23,7 @@ function addlistafavoritos(){
 	}
 	function getLinha(id) {
 		var a = 0;
-		var calorias = $(".resultado "+'.'+id+' .calorias').html();
+		var calorias = $(".content1 "+'.'+id+' .calorias').html();
 		var total = $("#total").html();
 		var resultado 	= parseInt(calorias) + parseInt(total);
 		$("#total").text(resultado);
