@@ -108,7 +108,7 @@ function addlistafavoritos(){
       		}
 		}); 
     };
-	
+var idUsuario = "<?php echo $idUsuario?>";
 </script>
 
 

@@ -139,7 +139,7 @@ function getListafavorito() {
 	result.innerHTML = '<img src="Progresso1.gif"/>'; 
 
 	// Iniciar uma requisição 
-	xmlreq.open("GET", "listafavoritos.php", true);
+	xmlreq.open("GET", "listafavoritos.php?id=" + idUsuario, true);
 	// Atribui uma função para ser executada sempre que houver uma mudança de ado 
 	xmlreq.onreadystatechange = function(){ 
 

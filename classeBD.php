@@ -134,8 +134,8 @@
 		
 					
 			}
-		function listaFavoritos(){
-				$sql = "SELECT * FROM refeicao WHERE favorito = 1"; 
+		function listaFavoritos($id_usuario){
+				$sql = "SELECT * FROM refeicao WHERE favorito = 1 AND id_usuario = '$id_usuario'"; 
 				$rs = mysqli_query($this->conexao, $sql);
 				 $tabela = "<div class=lista_favoritos>
 			  				<h1>Lista de Favoritos</h1>"; 
