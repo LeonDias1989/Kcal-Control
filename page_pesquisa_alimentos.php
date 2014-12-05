@@ -93,10 +93,11 @@ function addlistafavoritos(){
 	}
 	
 	function ajaxAlimento(nomeRefeicao, myJSONText){
+		var idUsuario = "<?php echo $idUsuario?>";
 		$.ajax({        
 		   type: "POST",
 		   url: "pesquisa_alimentos.php",
-		   data: { nome: nomeRefeicao, alimentos: myJSONText },
+		   data: { nome: nomeRefeicao, alimentos: myJSONText, id: idUsuario },
 		   success: function(data) {
 			   //alert("aaa" + data);
 				$("#msg_pop").html(data);

@@ -58,7 +58,7 @@ function getRefeicao() {
 	result.innerHTML = '<img src="Progresso1.gif"/>'; 
 
 	// Iniciar uma requisição 
-	xmlreq.open("GET", "pesquisa_refeicao.php?txtdata=" + data, true); 
+	xmlreq.open("GET", "pesquisa_refeicao.php?txtdata=" + data + "&idUsuario=" + idUsuario, true); 
 	
 	// Atribui uma função para ser executada sempre que houver uma mudança de ado 
 	xmlreq.onreadystatechange = function(){ 
