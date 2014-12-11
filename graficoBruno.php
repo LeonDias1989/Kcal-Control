@@ -3,7 +3,7 @@
     $acoes = new funcoesBD;
     if($acoes){
       $teste = $acoes->conectar();
-      $sql = "SELECT * FROM historico_peso"; 
+      $sql = "SELECT *,STR_TO_DATE(data_pesagem, '%d/%m/%y') FROM histrico_peso ORDER BY data_pesagem DESC"; 
       $result = mysqli_query($teste, $sql); 
     }
 ?>
@@ -54,8 +54,5 @@
   <body>
     <!--Div that will hold the pie chart-->
     <div id="chart_div"></div>
-
-
-
   </body>
 </html>

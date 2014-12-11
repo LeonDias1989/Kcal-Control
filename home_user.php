@@ -15,7 +15,8 @@
     $acoes = new funcoesBD;
     if($acoes){
       $teste = $acoes->conectar();
-      $sql = "SELECT * FROM historico_peso WHERE id_usuario = '$idUsuario'"; 
+      //$sql = "SELECT * FROM historico_peso WHERE id_usuario = '$idUsuario'"; 
+	  $sql = "SELECT *,DATE_FORMAT(data_pesagem, '%d/%m/%y')as novaData FROM historico_peso ORDER BY data_pesagem ASC"; 
       $result = mysqli_query($teste, $sql); 
     }
 ?>
@@ -40,7 +41,7 @@
         data.addRows([
         <?php
         while($row = mysqli_fetch_array($result)) {
-          echo "['".$row['data_pesagem'] ."',".$row['peso'] ."],";
+          echo "['".$row['novaData'] ."',".$row['peso'] ."],";
 
         }
         ?>
