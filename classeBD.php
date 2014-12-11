@@ -1,4 +1,6 @@
 ﻿<?php
+
+	include "usuario.php";
 	class funcoesBD {
 
 		private $conexao;
@@ -238,29 +240,55 @@
 			  	
 		}
 */
-		function alterarPesoUsuario($email, $peso){
+		function alterarPesoUsuario($id, $peso){
 
 			$agora = date("Y-m-d");
 
 			//esta consulta faz o update no peso do usuário
-			$consultaUpdateUsuario = "UPDATE usuario set peso =	'$peso'	where email= '$email'";
+			$consultaUpdateUsuario = "UPDATE usuario set peso =	'$peso'	where id= '$id'";
 			mysqli_query($this->conexao, $consultaUpdateUsuario);
 		
 			// --> 
-			$sql = "SELECT id FROM usuario WHERE email='$email'";
+
+			/*
+
+
+			$sql = "SELECT id FROM usuario WHERE id='$id'";
 			$result = mysqli_query($this->conexao, $sql);
 			$id_usuario = 0;
 			while ($result && $line = mysqli_fetch_object($result)) {
 				$id_usuario = $line->id;
 			}
+			**/
 			
-			$sql = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) VALUES ('$agora', $id_usuario, $peso)";
+			$sql = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) VALUES ('$agora', $id, $peso)";
 			mysqli_query($this->conexao, $sql);
 
+			header('location:home_user.php');
+			echo "<script>alert('Peso Alterado com Sucesso!');</script>";
+
+ 		}
+
+ 		function getUser($id){
+
+
+
+ 			$usuarioReturn = new Usuario();
+
+ 			$consultaUsuario = "SELECT * FROM usuario WHERE id = '$id'";
+
+ 			$result = mysqli_query($this->conexao, $consultaUsuario);
+
+ 			 while($row = $result->fetch_assoc()) {
 			
+ 			 		$usuarioReturn->__set("nome", $row["nome"]);
+ 			 		$usuarioReturn->__set("idade", $row["idade"]);
+ 			 		$usuarioReturn->__set("peso", $row["peso"]);
+ 			 		$usuarioReturn->__set("objetivo", $row["objetivo"]);
 
-			echo "Peso Alterado com Sucesso";
+			  }
 
+			  return $usuarioReturn;
  		}
 
 	}

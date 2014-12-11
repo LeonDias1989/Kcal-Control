@@ -3,9 +3,24 @@
 	<title>Kcal Control</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="css/style_pesquisa.css" rel="stylesheet" type="text/css">
+
+	<?php 
+		include "classeBD.php";
+		require "valida_login.php";
+		
+
+
+		$bdDAO = new funcoesBD();
+
+		$bdDAO->conectar();
+		$usuarioView = $bdDAO->getUser($_SESSION["idUsuarios"]);
+		$bdDAO->fecharConexao();
+
+
+	 ?>
 </head>
 <body>
-	<?php include 'includes/header.inc.php'; ?>
+<?php if(!isset($_SESSION["id"])){include 'includes/header.inc.php';}else{include 'includes/headerLogout.inc.php';} ?>
 
 <div class="content_center">
 
@@ -16,15 +31,35 @@
 		<ul>
 			<li>
 				<label>Nome: </label>
+				<?php 
+
+					echo $usuarioView->__get("nome");
+
+				 ?>
 			</li>
 			<li>
 				<label>Idade: </label>
+				<?php 
+
+					echo $usuarioView->__get("idade");
+
+				 ?>
 			</li>
 			<li>
 				<label>Peso: </label>
+				<?php 
+
+					echo $usuarioView->__get("peso");
+
+				 ?>
 			</li>
 			<li>
 				<label>Objetivo: </label>
+				<?php 
+
+					echo $usuarioView->__get("objetivo") ." Peso";
+
+				 ?>
 			</li>
 		</ul>
 		</div>
