@@ -31,7 +31,7 @@
         data.addRows([
         <?php
         while($row = mysqli_fetch_array($result)) {
-          "['".$row['data_pesagem'] ."',".$row['peso'] ."],";
+          echo "['".$row['data_pesagem'] ."',".$row['peso'] ."],";
 
         }
         ?>
@@ -39,7 +39,7 @@
         ]);
 
         // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
+        var options = {'title':'Historico peso:',
                        'width':800,
                         curveType: 'function',
                        'height':300};
@@ -56,11 +56,6 @@
     <div id="chart_div"></div>
 
 
-    <?php
-  while($row = mysqli_fetch_array($result)) {
-   echo "['".$row['data_pesagem'] ."',".$row['peso'] ."],";
 
-  }
-?>
   </body>
 </html>

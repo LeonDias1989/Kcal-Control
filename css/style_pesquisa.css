@@ -400,7 +400,7 @@ margin: 10px 50px 20px 0;color: white; text-align: center; font-family:Facebook 
 }
 .cadastro1{ display:block;}
 
-footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:20px 0 0 0; float:left; width:100%;}
+footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:200px 0 0 0; float:left; width:100%;}
 #footer_central{margin: auto; width: 1020px;}
 .footer_menu { float:right; margin:50px 0 0 0;width: 50%;}
 .footer_menu ul{ float:left; margin: 0 5px 0 55px;}
@@ -420,7 +420,7 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 
 
 .content_center{ width:1020px; margin:80px auto;}
-.content_center h2{ text-align: center;}
+.content_center h2{ text-align: center;font: 30px facebook Letter Faces;}
 .box_home{ width:32%; float:left;margin: 0 1.3% 0 0;}
 .box_home img{margin: auto; display: block;}
 .box_home p{width: 260px; margin: 10px auto;}
@@ -478,3 +478,7 @@ footer{ background:url(../imagens/bg_footer.png) repeat-x; height:308px; margin:
 }
 #box-esq{float:left;}
 #box-central{ float: right;}
+#box-central input{ cursor:pointer;}
+#chart_div{ float:left!important;margin: 50px 0 0 0;}
+.box-info label{font: 22px facebook Letter Faces;}
+.box-info{font: 16px arial;}

@@ -19,7 +19,7 @@
 			
 	
 		function incluirUsuario($nome, $email, $sexo, $senha, $confirmaSenha, $altura, $peso, $idade , $objetivo){
-			$consulta = "SELECT email FROM usuario WHERE email='$email'";
+			$consulta = "SELECT * FROM usuario WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
 
 			if(mysqli_num_rows($resultado) !=0){
@@ -30,10 +30,25 @@
 				$inserir = "INSERT INTO usuario (nome, email, sexo, senha, altura, peso, idade, objetivo) 
 				VALUES ('$nome', '$email', '$sexo', '$senha', '$altura', '$peso', '$idade', '$objetivo')";
 				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o usuário");
+				$ultimoIdUsuario = $this->conexao->insert_id;
+				return $ultimoIdUsuario;
+				
 				//echo"Cadastro efetuado com sucesso !";
-				header('location:page_pesquisa_alimentos.php');
+
 			}
 		}	
+
+		function incluirUsuariopeso($ultimoIdUsuario, $peso){
+				$hoje = date("Y-m-d");
+				$inserir = "INSERT INTO historico_peso (data_pesagem, id_usuario, peso) 
+				VALUES ('$hoje','$ultimoIdUsuario', '$peso')";
+				$resultado = mysqli_query($this->conexao, $inserir) or die ("Não foi possível inserir o alimento");
+				session_start();
+				$_SESSION["id"] = session_id(); // foda-se isso...
+				$_SESSION['idUsuarios'] = $ultimoIdUsuario;
+				header('location:home_user.php');
+				
+		}
         
         function incluirAlimento($nome, $peso, $porcao, $calorias){
 			$consulta = "SELECT nome FROM alimentos WHERE nome='nome'";

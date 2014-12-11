@@ -19,7 +19,8 @@
 
 			$bd = new funcoesBD();
 			$bd->conectar();
-			$bd->incluirUsuario($nome, $email, $sexo, md5($senha), md5($confirmaSenha), $altura, $peso, $idade , $objetivo);
+			$ultimoIdUsuario = $bd->incluirUsuario($nome, $email, $sexo, md5($senha), md5($confirmaSenha), $altura, $peso, $idade , $objetivo);
+			$bd->incluirUsuariopeso($ultimoIdUsuario, $peso);
 			$bd->fecharConexao();
 			
 		}else{
