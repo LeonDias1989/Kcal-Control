@@ -5,7 +5,7 @@
                 </a>
         <ul>
         	
-            <li><a href="selecionarRefeicao.php" title="#">Controle</a></li>
+            <li><a href="selecionarRefeicao.php" title="#">Refeições</a></li>
             <li><a href="page_pesquisa_alimentos.php" title="#">Pesquisa</a></li>
             <li><a href="home_user.php" title="#">Minha Conta</a></li>
             <li><a href="logout.php" title="#" onclick="addalimento('login');">Logout</a></li>

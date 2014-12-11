@@ -19,7 +19,7 @@ var idUsuario = "<?php echo $idUsuario?>";
 
 	<div id="Container">
        <div id="Pesquisar"> 
-           <h1 class="titulo">Agenda de refeições</h1>
+           <h1 class="titulo">Minhas refeições</h1>
            <input type="text"  name="txtdata" id="txtdata" placeholder="O que você comeu hoje ?">
            <input type="button" name="btnPesquisar" id="btn-busca" value="Pesquisar" onclick="getRefeicao();"/> 
            <input type="button" value="add" id="btn-add" onclick="addalimento('addalimento');">
